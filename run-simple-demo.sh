@@ -7,7 +7,11 @@ cd "$PROJECT_DIR"
 export UV_CACHE_DIR="${UV_CACHE_DIR:-$PROJECT_DIR/.uv-cache}"
 export DJANGO_SQLITE_PATH="$PROJECT_DIR/.simple-demo.sqlite3"
 export DJANGO_MEDIA_ROOT="$PROJECT_DIR/.simple-demo-media"
-BIND_ADDRESS="${DJANGO_BIND_ADDRESS:-127.0.0.1:8001}"
+if [[ -n "${RENDER:-}" || -n "${PORT:-}" ]]; then
+  BIND_ADDRESS="${DJANGO_BIND_ADDRESS:-0.0.0.0:${PORT:-8001}}"
+else
+  BIND_ADDRESS="${DJANGO_BIND_ADDRESS:-127.0.0.1:8001}"
+fi
 
 # This demo database is disposable and reset from its own fixture on each start.
 rm -f -- "$DJANGO_SQLITE_PATH" "$DJANGO_SQLITE_PATH-journal" "$DJANGO_SQLITE_PATH-wal" "$DJANGO_SQLITE_PATH-shm"
