@@ -5,8 +5,8 @@ Implement in order, keeping each step small and locally runnable. Update this li
 ## Proof of concept
 
 - [x] Create a minimal Django project and responsive shell with Home, Teams, Schedule, Standings, Coaches, Admin, and Rules navigation.
-- [ ] Run the POC locally and confirm every tab and the mobile layout work in a browser.
-- [ ] Add a short smoke E2E test for navigation using Playwright.
+- [x] Run the POC locally and confirm every tab and the mobile layout work in a browser.
+- [x] Add a short smoke E2E test for navigation using Playwright.
 
 ## Core league data
 
