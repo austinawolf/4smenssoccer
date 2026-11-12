@@ -5,6 +5,7 @@ Implement in order, keeping each step small and locally runnable. Update this li
 ## Proof of concept
 
 - [x] Create a minimal Django project and responsive shell with Home, Teams, Schedule, Standings, Coaches, Admin, and Rules navigation.
+- [x] Standardize local and CI Python dependency management on uv and commit a lockfile.
 - [x] Run the POC locally and confirm every tab and the mobile layout work in a browser.
 - [x] Add a short smoke E2E test for navigation using Playwright.
 
@@ -30,7 +31,7 @@ Implement in order, keeping each step small and locally runnable. Update this li
 
 - [ ] Add unit tests for model constraints, permissions, score states, active-season switching and standings.
 - [ ] Configure Playwright E2E tests with `pytest-playwright`, covering public navigation and the score submission/review flow.
-- [ ] Add a GitHub Actions pull-request workflow that installs Python dependencies and Chromium, runs Django checks/unit tests and Playwright E2E tests, and uploads reports on failure.
+- [ ] Add a GitHub Actions pull-request workflow that runs `uv sync --locked`, installs Chromium, runs Django checks/unit tests and Playwright E2E tests, and uploads reports on failure.
 - [ ] Switch development and production configuration to PostgreSQL and environment-based secrets.
 - [ ] Configure persistent media storage, image validation/resizing, and phone upload behavior.
 - [ ] Prepare Render deployment, migrations, health check, backups, and production security settings.

@@ -171,6 +171,7 @@ The current site contains some inconsistent season labels and historical content
 ## Hosting and operations
 
 - **Application:** Django deployed as a Render web service.
+- **Python tooling:** use `uv` for dependency declarations, lockfile generation and repeatable local/CI environments. Commit `pyproject.toml` and `uv.lock`; CI should install with `uv sync --locked`.
 - **Database:** Render-managed PostgreSQL; SQLite may be used only for local throwaway development if desired. Development and production should use the same database engine to reduce surprises.
 - **Static files:** Django static assets collected during deployment and served through a supported static-file setup/CDN.
 - **Media:** team badges and gallery images stored in object storage or a compatible managed media service; save URLs/metadata in PostgreSQL. Do not rely on the Render service filesystem for persistent uploads.
