@@ -17,6 +17,7 @@ Keep that shell open for the commands below. The cache is local and ignored by G
 ```bash
 uv sync --locked
 uv run --locked python manage.py migrate
+uv run --locked python manage.py createsuperuser
 uv run --locked python manage.py runserver
 ```
 
@@ -29,6 +30,8 @@ uv run --locked python manage.py runserver 0.0.0.0:8000
 Then open `http://<development-machine-Wi-Fi-IP>:8000/` on the phone. On Linux, `hostname -I` lists local addresses; use the address for the Wi-Fi network (for example, `192.168.0.63`), not a Docker address. Django's development server reloads when source files change. Use `Ctrl+C` to stop it.
 
 The POC uses local SQLite and has no production credentials or external services. Do not deploy it as-is. The SQLite database is ignored by Git and can be recreated with `uv run --locked python manage.py migrate`.
+
+After creating a superuser, open <http://127.0.0.1:8000/django-admin/> and add a published season, mark it active, then add its teams, rosters, fixtures, and season rules. The public tabs will read from those records. Local image uploads are stored under the ignored `media/` directory.
 
 ## E2E tests
 

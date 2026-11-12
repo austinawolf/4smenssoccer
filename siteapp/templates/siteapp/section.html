@@ -13,24 +13,136 @@
     <a class="brand" href="{% url 'home' %}">4S Ranch <span>Men's Soccer</span></a>
     <nav aria-label="Main navigation">
       {% for slug, section in sections.items %}
-        <a href="{% if slug == 'home' %}{% url 'home' %}{% else %}{% url 'section' slug=slug %}{% endif %}"
+        <a href="{% if slug == 'home' %}{% url 'home' %}{% else %}{% url 'section' slug=slug %}{% endif %}{% if season %}?season={{ season.slug }}{% endif %}"
            {% if slug == active_slug %}aria-current="page"{% endif %}>{{ section.0 }}</a>
       {% endfor %}
     </nav>
   </header>
   <main>
-    <section class="hero">
+    <section class="hero {% if active_slug != 'home' %}hero-compact{% endif %}">
       <p class="eyebrow">Established 2005 · 4S Ranch</p>
       <h1>{{ heading }}</h1>
       <p class="intro">{{ description }}</p>
-      {% if active_slug == 'home' %}
-        <div class="season-card">
-          <span class="status-dot" aria-hidden="true"></span>
-          <div><strong>Season-aware league site</strong><br><span>Season database and admin controls are next.</span></div>
-        </div>
+      {% if seasons %}
+        <form class="season-picker" method="get">
+          <label for="season">Season</label>
+          <select id="season" name="season" onchange="this.form.submit()">
+            {% for option in seasons %}
+              <option value="{{ option.slug }}" {% if season.id == option.id %}selected{% endif %}>
+                {{ option.name }}{% if option.is_active %} · Current{% endif %}
+              </option>
+            {% endfor %}
+          </select>
+          <noscript><button type="submit">View season</button></noscript>
+        </form>
       {% endif %}
     </section>
-    <footer>Sunday mornings · 4S Ranch Sports Park</footer>
+
+    {% if active_slug == 'home' %}
+      <section class="home-grid">
+        <article class="content-card home-feature">
+          {% if season %}
+            <p class="eyebrow">{{ season.name }}</p>
+            <h2>Sunday mornings at 4S Ranch Sports Park</h2>
+            <p>Season schedule, teams and approved results in one place.</p>
+            <div class="button-row">
+              <a class="button" href="{% url 'section' slug='schedule' %}?season={{ season.slug }}">View schedule</a>
+              <a class="text-link" href="{% url 'section' slug='teams' %}?season={{ season.slug }}">Meet the teams →</a>
+            </div>
+          {% else %}
+            <h2>Season information is coming soon</h2>
+            <p>An administrator can add and activate a season in the Admin site.</p>
+          {% endif %}
+        </article>
+        <article class="content-card">
+          <p class="eyebrow">About the league</p>
+          <h2>Good soccer. Good people.</h2>
+          <p>11 v 11 men's league established in 2005. Players must meet the season age requirements. New players attend a pre-season scrimmage so managers can build balanced teams.</p>
+          <a class="text-link" href="{% url 'section' slug='rules' %}">Read the league rules →</a>
+        </article>
+        <article class="content-card">
+          <p class="eyebrow">League history</p>
+          <h2>Every season has a story.</h2>
+          <p>Browse champions and season awards, or revisit moments from the gallery.</p>
+          <div class="button-row">
+            <a class="text-link" href="{% url 'section' slug='awards' %}">Champions & awards →</a>
+            <a class="text-link" href="{% url 'section' slug='gallery' %}">Photo gallery →</a>
+          </div>
+        </article>
+      </section>
+    {% elif active_slug == 'teams' %}
+      {% if season_teams %}
+        <section class="team-grid" aria-label="{{ season.name }} teams">
+          {% for entry in season_teams %}
+            <article class="content-card team-card">
+              {% if entry.team.badge %}<img class="team-badge" src="{{ entry.team.badge.url }}" alt="{{ entry.name }} badge">{% endif %}
+              <h2>{{ entry.name }}</h2>
+              {% if entry.team.description %}<p>{{ entry.team.description }}</p>{% endif %}
+              <h3>Roster</h3>
+              <ul class="roster-list">
+                {% for membership in entry.roster.all %}
+                  {% if membership.status != 'inactive' and membership.player.public_profile %}
+                    <li>
+                      {% if membership.player.photo %}<img class="player-photo" src="{{ membership.player.photo.url }}" alt="">{% endif %}
+                      <span>{% if membership.jersey_number %}#{{ membership.jersey_number }} {% endif %}{{ membership.player.display_name }}</span>
+                      {% if membership.get_position_display %}<small>{{ membership.get_position_display }}</small>{% endif %}
+                    </li>
+                  {% endif %}
+                {% empty %}<li class="muted">Roster not published yet.</li>{% endfor %}
+              </ul>
+            </article>
+          {% endfor %}
+        </section>
+      {% else %}<p class="empty-state">No teams have been added for this season yet.</p>{% endif %}
+    {% elif active_slug == 'schedule' %}
+      <section class="match-list" aria-label="{{ season.name|default:'Season' }} schedule">
+        {% for match in matches %}
+          <article class="match-card">
+            <div class="match-date"><strong>{{ match.kickoff_at|date:'D, M j' }}</strong><span>{{ match.kickoff_at|time:'g:i A' }}</span></div>
+            <div class="match-teams"><span>{{ match.home_team.name }}</span><span class="versus">vs</span><span>{{ match.away_team.name }}</span></div>
+            <div class="match-score">{% if match.has_approved_score %}<strong>{{ match.home_score }} – {{ match.away_score }}</strong>{% else %}<span class="pill">{{ match.get_status_display }}</span>{% endif %}</div>
+            <div class="match-meta">{{ match.venue }}{% if match.round_name %} · {{ match.round_name }}{% endif %}</div>
+          </article>
+        {% empty %}<p class="empty-state">No fixtures have been added for this season yet.</p>{% endfor %}
+      </section>
+    {% elif active_slug == 'standings' %}
+      <section class="content-card table-card">
+        <div class="section-heading"><div><p class="eyebrow">{{ season.name|default:'Season' }}</p><h2>Regular season</h2></div>{% if season %}<span class="table-note">{{ season.points_for_win }} pts win · {{ season.points_for_draw }} pt draw</span>{% endif %}</div>
+        <div class="table-scroll"><table>
+          <thead><tr><th>Pos</th><th>Club</th><th>P</th><th>W</th><th>D</th><th>L</th><th>F</th><th>A</th><th>GD</th><th>Pts</th></tr></thead>
+          <tbody>
+            {% for row in standings %}<tr><td>{{ forloop.counter }}</td><td class="club-cell">{{ row.team.name }}</td><td>{{ row.played }}</td><td>{{ row.wins }}</td><td>{{ row.draws }}</td><td>{{ row.losses }}</td><td>{{ row.goals_for }}</td><td>{{ row.goals_against }}</td><td>{{ row.goal_difference }}</td><td><strong>{{ row.points }}</strong></td></tr>
+            {% empty %}<tr><td colspan="10" class="empty-cell">Standings will appear when approved regular-season results are recorded.</td></tr>{% endfor %}
+          </tbody>
+        </table></div>
+      </section>
+      <section class="content-card table-card">
+        <div class="section-heading"><div><p class="eyebrow">{{ season.name|default:'Season' }}</p><h2>Player leaderboard</h2></div><span class="table-note">Points = 2 × goals + assists</span></div>
+        <div class="table-scroll"><table>
+          <thead><tr><th>Rank</th><th>Player</th><th>Club</th><th>GP</th><th>Pts</th><th>PPG</th><th>G</th><th>A</th><th>YC</th><th>RC</th></tr></thead>
+          <tbody>
+            {% for row in leaderboard %}<tr><td>{{ forloop.counter }}</td><td class="club-cell">{{ row.player.display_name }}</td><td>{{ row.team }}</td><td>{{ row.games_played }}</td><td>{{ row.points }}</td><td>{{ row.points_per_game|floatformat:2 }}</td><td>{{ row.goals }}</td><td>{{ row.assists }}</td><td>{{ row.yellow_cards }}</td><td>{{ row.red_cards }}</td></tr>
+            {% empty %}<tr><td colspan="10" class="empty-cell">Player stats will appear when match appearances and events are recorded.</td></tr>{% endfor %}
+          </tbody>
+        </table></div>
+      </section>
+    {% elif active_slug == 'rules' %}
+      {% if rules %}
+        <article class="content-card rules-card"><p class="eyebrow">Updated {{ rules.updated_at|date:'N j, Y' }}</p><h2>{{ rules.title }}</h2><div class="rule-body">{{ rules.body|linebreaks }}</div></article>
+      {% else %}<p class="empty-state">Rules for this season have not been published yet.</p>{% endif %}
+    {% elif active_slug == 'awards' %}
+      {% if awards %}<section class="award-grid">{% for award in awards %}<article class="content-card award-card"><p class="eyebrow">{{ award.season.name }}</p><h2>{{ award.get_category_display }}</h2><p class="award-recipient">{% if award.player %}{{ award.player.display_name }}{% else %}{{ award.season_team.name }}{% endif %}</p>{% if award.citation %}<p>{{ award.citation }}</p>{% endif %}</article>{% endfor %}</section>
+      {% else %}<p class="empty-state">No champions or awards have been added for this season yet.</p>{% endif %}
+    {% elif active_slug == 'gallery' %}
+      {% if gallery_items %}<section class="gallery-grid">{% for item in gallery_items %}<figure class="content-card gallery-card"><img src="{{ item.image.url }}" alt="{{ item.caption|default:'Soccer photo' }}" loading="lazy"><figcaption>{{ item.caption }}{% if item.season %}<small>{{ item.season.name }}</small>{% endif %}</figcaption></figure>{% endfor %}</section>
+      {% else %}<p class="empty-state">No photos have been added for this season yet.</p>{% endif %}
+    {% elif active_slug == 'coaches' %}
+      <article class="content-card staff-placeholder"><p class="eyebrow">Staff access</p><h2>Coach workspace</h2><p>Coach sign-in and score reporting will be added in the staff workflow phase.</p></article>
+    {% elif active_slug == 'admin' %}
+      <article class="content-card staff-placeholder"><p class="eyebrow">League staff</p><h2>Administration</h2><p>Manage seasons, teams, players, results and content in the <a class="text-link" href="/django-admin/">Django admin</a> for now.</p></article>
+    {% endif %}
+
+    <footer>Sunday mornings · 4S Ranch Sports Park <span>·</span> <a href="{% url 'section' slug='rules' %}{% if season %}?season={{ season.slug }}{% endif %}">League rules</a></footer>
   </main>
 </body>
 </html>

@@ -11,11 +11,11 @@ Implement in order, keeping each step small and locally runnable. Update this li
 
 ## Core league data
 
-- [ ] Add database-backed seasons and an admin-controlled single active season; make public pages default to it.
-- [ ] Add teams, season-team entries, players, season rosters, player photos, and private player rank.
-- [ ] Add matches, schedule display, approved results, and season-specific rules.
-- [ ] Calculate standings from approved regular-season results and publish the season leaderboard from recorded match stats.
-- [ ] Add champions/awards and gallery pages or links, based on which historical content will be migrated.
+- [x] Add database-backed seasons and an admin-controlled single active season; make public pages default to it.
+- [x] Add teams, season-team entries, players, season rosters, player photos, and private player rank.
+- [x] Add matches, schedule display, approved results, and season-specific rules.
+- [x] Calculate standings from approved regular-season results and publish the season leaderboard from recorded match stats.
+- [x] Add champions/awards and gallery pages or links, based on which historical content will be migrated.
 
 ## Staff workflows
 

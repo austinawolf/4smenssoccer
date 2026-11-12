@@ -93,7 +93,7 @@ Core entities:
 | `MatchAppearance` | match, player/roster membership, played flag/minutes (optional) | Enables player games-played stats if recorded consistently. |
 | `MatchEvent` | match, player, event type, minute, assist (optional), notes | Goals and cards can power player leaderboards. Keep corrections traceable. |
 | `Award` | season, player or team, award type, citation/notes | Covers champions, MVP, Golden Boot, Golden Gloves and other league-defined honors. |
-| `RuleSet` / `Rule` | season or effective date, title, body/order | Rules change over time; archived seasons should retain the applicable rules. |
+| `SeasonRules` | one rule document per season, title, body, update date | Rules change over time; archived seasons retain the applicable rules. |
 | `GalleryItem` | season (optional), image, caption, taken/published date | Media can be hosted in object storage rather than PostgreSQL. |
 | `LeagueSetting` | contact details, venue/map link, sponsor and home-page copy | Keep frequently edited public copy out of templates. |
 
