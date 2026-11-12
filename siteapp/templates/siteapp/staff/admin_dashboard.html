@@ -8,19 +8,21 @@
       <label for="review-select">Select a result to review <span class="muted">{{ reviews|length }} pending · newest game first</span></label>
       <select id="review-select" name="review" onchange="this.form.submit()">
         {% for item in reviews %}
-          <option value="{{ item.pk }}"{% if item.pk == selected_review.pk %} selected{% endif %}>{{ item.match.kickoff_at|date:'M j, Y' }} · {{ item.match.home_team.name }} vs {{ item.match.away_team.name }} · {{ item.home_score }}–{{ item.away_score }}</option>
+          <option value="{{ item.pk }}"{% if item.pk == selected_review.pk %} selected{% endif %}>{{ item.match.kickoff_at|date:'M j, Y' }} · {{ item.match.home_team.name }} {{ item.home_score }}–{{ item.match.away_team.name }} {{ item.away_score }}</option>
         {% endfor %}
       </select>
     </form>
   {% endif %}
   {% if selected_review %}
     {% with review=selected_review %}
-    <article class="content-card staff-match">
+    <article class="content-card staff-match admin-review">
       <p class="eyebrow">{{ review.match.season.name }} · {{ review.match.kickoff_at|date:'D, M j, Y, g:i A' }} · {{ review.get_source_display }}</p>
       <h2>{{ review.match.home_team.name }} vs {{ review.match.away_team.name }}</h2>
-      <p class="proposed-score">Proposed result: <strong>{{ review.home_score }}–{{ review.away_score }}</strong></p>
-      <ul class="report-list">{% for report in review.match.score_submissions.all %}{% if report.is_current %}<li class="team-report-summary"><strong>{{ report.reporting_team.name }}</strong><span>{{ report.home_score }}–{{ report.away_score }}</span><small>{{ report.submitted_by.get_full_name|default:report.submitted_by.username }}</small><div class="team-report-stats">{% if report.player_stats.all %}{% for stat in report.player_stats.all %}<span>{{ stat.player.display_name }}: {{ stat.goals }} goal{{ stat.goals|pluralize }} · {{ stat.assists }} assist{{ stat.assists|pluralize }}</span>{% endfor %}{% else %}<span class="muted">No player goals or assists reported</span>{% endif %}</div></li>{% endif %}{% endfor %}</ul>
-      {% if review.player_stats.all %}<h3>Player goals and assists</h3><ul class="report-list">{% for stat in review.player_stats.all %}<li><strong>{{ stat.player.display_name }}</strong><span>{{ stat.goals }} goals · {{ stat.assists }} assists</span></li>{% endfor %}</ul>{% endif %}
+      <p class="proposed-score">Proposed result: <strong>{{ review.match.home_team.name }} {{ review.home_score }} · {{ review.match.away_team.name }} {{ review.away_score }}</strong></p>
+      {% if review.reports_match %}<p class="score-agreement score-agreement-match"><span aria-hidden="true">✓</span><strong>Team reports match</strong></p>{% elif review.current_reports|length > 1 %}<p class="score-agreement score-agreement-mismatch"><span aria-hidden="true">✕</span><strong>Team reports differ</strong></p>{% else %}<p class="score-agreement score-agreement-waiting">Waiting for both team reports</p>{% endif %}
+      <h3 class="review-section-title">Team submissions</h3>
+      <ul class="report-list">{% for report in review.current_reports %}<li class="team-report-summary"><strong>{{ report.reporting_team.name }} report</strong><div class="reported-score"><span class="reported-score-side"><small>{{ review.match.home_team.name }}</small><b>{{ report.home_score }}</b></span><span class="reported-score-side"><small>{{ review.match.away_team.name }}</small><b>{{ report.away_score }}</b></span></div><small>Submitted by {{ report.submitted_by.get_full_name|default:report.submitted_by.username }}</small><div class="team-report-stats">{% if report.player_stats.all %}{% for stat in report.player_stats.all %}<span><strong>{{ stat.player.display_name }}</strong><span>{{ stat.goals }} goal{{ stat.goals|pluralize }} · {{ stat.assists }} assist{{ stat.assists|pluralize }} · {{ stat.yellow_cards }} yellow · {{ stat.red_cards }} red</span></span>{% endfor %}{% else %}<span class="muted">No player stats reported</span>{% endif %}</div></li>{% endfor %}</ul>
+      {% if review.player_stats.all %}<h3 class="review-section-title">Combined player stats for approval</h3><ul class="report-list">{% for stat in review.player_stats.all %}<li><strong>{{ stat.player.display_name }}</strong><span>{{ stat.goals }} goals · {{ stat.assists }} assists · {{ stat.yellow_cards }} yellow · {{ stat.red_cards }} red</span></li>{% endfor %}</ul>{% endif %}
       <form method="post" action="{% url 'staff_review_decision' review.id %}" class="staff-form score-form">
         {% csrf_token %}<h3>Review official score</h3>
         <div class="score-inputs"><label>{{ review.match.home_team.name }}<input type="number" name="home_score" aria-label="{{ review.match.home_team.name }} score" min="0" max="99" value="{{ review.home_score }}" required></label><label>{{ review.match.away_team.name }}<input type="number" name="away_score" aria-label="{{ review.match.away_team.name }} score" min="0" max="99" value="{{ review.away_score }}" required></label></div>

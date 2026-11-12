@@ -29,16 +29,26 @@ class ScoreSubmissionForm(ScoreForm):
             player = membership.player
             goals_name = f"goals_{player.pk}"
             assists_name = f"assists_{player.pk}"
+            yellow_cards_name = f"yellow_cards_{player.pk}"
+            red_cards_name = f"red_cards_{player.pk}"
             self.fields[goals_name] = forms.IntegerField(
                 min_value=0, max_value=99, required=False, initial=0, label=f"{player.display_name} goals"
             )
             self.fields[assists_name] = forms.IntegerField(
                 min_value=0, max_value=99, required=False, initial=0, label=f"{player.display_name} assists"
             )
+            self.fields[yellow_cards_name] = forms.IntegerField(
+                min_value=0, max_value=9, required=False, initial=0, label=f"{player.display_name} yellow cards"
+            )
+            self.fields[red_cards_name] = forms.IntegerField(
+                min_value=0, max_value=9, required=False, initial=0, label=f"{player.display_name} red cards"
+            )
             self.player_rows.append({
                 "player": player,
                 "goals_name": goals_name,
                 "assists_name": assists_name,
+                "yellow_cards_name": yellow_cards_name,
+                "red_cards_name": red_cards_name,
             })
 
     def get_player_stats(self):
@@ -46,8 +56,11 @@ class ScoreSubmissionForm(ScoreForm):
         for row in self.player_rows:
             goals = self.cleaned_data.get(row["goals_name"]) or 0
             assists = self.cleaned_data.get(row["assists_name"]) or 0
-            if goals or assists:
-                stats.append({"player": row["player"], "goals": goals, "assists": assists})
+            yellow_cards = self.cleaned_data.get(row["yellow_cards_name"]) or 0
+            red_cards = self.cleaned_data.get(row["red_cards_name"]) or 0
+            if goals or assists or yellow_cards or red_cards:
+                stats.append({"player": row["player"], "goals": goals, "assists": assists,
+                              "yellow_cards": yellow_cards, "red_cards": red_cards})
         return stats
 
     def clean(self):
@@ -63,7 +76,10 @@ class ScoreSubmissionForm(ScoreForm):
                 else cleaned_data["away_score"]
             )
             if reported_goals > team_score:
-                raise forms.ValidationError("Player goals cannot exceed the score reported for your team.")
+                raise forms.ValidationError(
+                    f"Player goals for {self.team.team.name} total {reported_goals}, "
+                    f"which exceeds the reported team score of {team_score}."
+                )
         return cleaned_data
 
 

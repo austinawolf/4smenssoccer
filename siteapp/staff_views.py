@@ -64,9 +64,9 @@ def _create_score_review(match, reports, user, source, home_score=None, away_sco
     totals = {}
     for report in reports:
         for stat in report.player_stats.all():
-            counts = totals.setdefault(stat.player_id, {"goals": 0, "assists": 0})
-            counts["goals"] += stat.goals
-            counts["assists"] += stat.assists
+            counts = totals.setdefault(stat.player_id, {"goals": 0, "assists": 0, "yellow_cards": 0, "red_cards": 0})
+            for field in counts:
+                counts[field] += getattr(stat, field)
     ScoreReviewPlayerStat.objects.bulk_create([
         ScoreReviewPlayerStat(review=review, player_id=player_id, **counts)
         for player_id, counts in totals.items()
@@ -140,19 +140,24 @@ def coach_dashboard(request):
                 season_team=team,
                 status__in=(RosterMembership.Status.ACTIVE, RosterMembership.Status.SUBSTITUTE),
             ).select_related("player")
+            submitted_values = request.session.pop(f"score_form_{match.pk}_{team.pk}", {})
             team_forms.append({
                 "team": team,
                 "form_state": form_state,
                 "submission_id": draft.pk if draft else None,
-                "home_score": form_submission.home_score if form_submission else "",
-                "away_score": form_submission.away_score if form_submission else "",
+                "home_score": submitted_values.get("home_score", form_submission.home_score if form_submission else ""),
+                "away_score": submitted_values.get("away_score", form_submission.away_score if form_submission else ""),
                 "players": [
                     {
                         "player": member.player,
                         "goals_name": f"goals_{member.player_id}",
                         "assists_name": f"assists_{member.player_id}",
-                        "goals": existing_stats.get(member.player_id).goals if member.player_id in existing_stats else 0,
-                        "assists": existing_stats.get(member.player_id).assists if member.player_id in existing_stats else 0,
+                        "yellow_cards_name": f"yellow_cards_{member.player_id}",
+                        "red_cards_name": f"red_cards_{member.player_id}",
+                        "goals": submitted_values.get(f"goals_{member.player_id}", existing_stats.get(member.player_id).goals if member.player_id in existing_stats else 0),
+                        "assists": submitted_values.get(f"assists_{member.player_id}", existing_stats.get(member.player_id).assists if member.player_id in existing_stats else 0),
+                        "yellow_cards": submitted_values.get(f"yellow_cards_{member.player_id}", existing_stats.get(member.player_id).yellow_cards if member.player_id in existing_stats else 0),
+                        "red_cards": submitted_values.get(f"red_cards_{member.player_id}", existing_stats.get(member.player_id).red_cards if member.player_id in existing_stats else 0),
                     }
                     for member in roster
                 ],
@@ -227,12 +232,19 @@ def submit_score(request, match_id):
     action = request.POST.get("action")
     if action not in {"save_pending", "submit"}:
         raise PermissionDenied("Choose whether to save a pending report or submit it.")
-    if action == "submit" and not pending:
-        raise PermissionDenied("Save a pending report before submitting it.")
     form = ScoreSubmissionForm(request.POST, team=reporting_team, match=match)
     if not form.is_valid():
-        messages.error(request, "Enter both scores as whole numbers from 0 to 99.")
-        return redirect("staff_coach")
+        form.fields["home_score"].label = match.home_team.team.name
+        form.fields["away_score"].label = match.away_team.team.name
+        for field_name, errors in form.errors.items():
+            label = form.fields[field_name].label if field_name in form.fields else "Player stats"
+            for error in errors:
+                messages.error(request, f"{label}: {error}")
+        value_names = set(form.fields)
+        request.session[f"score_form_{match.pk}_{reporting_team_id}"] = {
+            name: request.POST.get(name, "") for name in value_names
+        }
+        return redirect(f"/staff/coach/?game={match.pk}")
 
     with transaction.atomic():
         submission = pending or ScoreSubmission(
@@ -360,6 +372,16 @@ def admin_dashboard(request):
         (review for review in reviews if str(review.pk) == request.GET.get("review")),
         reviews[0] if reviews else None,
     )
+    for review in reviews:
+        current_reports = [
+            report for report in review.match.score_submissions.all()
+            if report.is_current and report.status == ScoreSubmission.Status.SUBMITTED
+        ]
+        review.current_reports = current_reports
+        review.reports_match = (
+            len(current_reports) == 2
+            and len({(report.home_score, report.away_score) for report in current_reports}) == 1
+        )
     return render(request, "siteapp/staff/admin_dashboard.html", {
         "reviews": reviews,
         "selected_review": selected_review,
@@ -420,6 +442,16 @@ def decide_score_review(request, review_id):
                     MatchEvent(match=review.match, player=stat.player, kind=MatchEvent.Kind.ASSIST,
                                source_score_review=review)
                     for _ in range(stat.assists)
+                )
+                events.extend(
+                    MatchEvent(match=review.match, player=stat.player, kind=MatchEvent.Kind.YELLOW_CARD,
+                               source_score_review=review)
+                    for _ in range(stat.yellow_cards)
+                )
+                events.extend(
+                    MatchEvent(match=review.match, player=stat.player, kind=MatchEvent.Kind.RED_CARD,
+                               source_score_review=review)
+                    for _ in range(stat.red_cards)
                 )
             MatchEvent.objects.bulk_create(events)
             messages.success(request, "Official result approved and published.")

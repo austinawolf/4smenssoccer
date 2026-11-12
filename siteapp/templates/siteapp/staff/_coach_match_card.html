@@ -7,7 +7,7 @@
     </div>
     {% if card.team_reports %}
       <h4>Team reports</h4>
-      <ul class="report-list">{% for report in card.team_reports %}<li class="team-report-summary"><strong>{{ report.team.name }} · {{ report.state|title }}</strong><span>{{ report.submission.home_score }}–{{ report.submission.away_score }}</span><small>Saved by {{ report.submission.submitted_by.get_full_name|default:report.submission.submitted_by.username }}</small><div class="team-report-stats">{% if report.submission.player_stats.all %}{% for stat in report.submission.player_stats.all %}<span>{{ stat.player.display_name }}: {{ stat.goals }} goal{{ stat.goals|pluralize }} · {{ stat.assists }} assist{{ stat.assists|pluralize }}</span>{% endfor %}{% else %}<span class="muted">No player goals or assists reported</span>{% endif %}</div></li>{% endfor %}</ul>
+      <ul class="report-list">{% for report in card.team_reports %}<li class="team-report-summary"><strong>{{ report.team.name }} · {{ report.state|title }}</strong><span>{{ report.submission.home_score }}–{{ report.submission.away_score }}</span><small>Saved by {{ report.submission.submitted_by.get_full_name|default:report.submission.submitted_by.username }}</small><div class="team-report-stats">{% if report.submission.player_stats.all %}{% for stat in report.submission.player_stats.all %}<span>{{ stat.player.display_name }}: {{ stat.goals }} goal{{ stat.goals|pluralize }} · {{ stat.assists }} assist{{ stat.assists|pluralize }} · {{ stat.yellow_cards }} yellow · {{ stat.red_cards }} red</span>{% endfor %}{% else %}<span class="muted">No player stats reported</span>{% endif %}</div></li>{% endfor %}</ul>
     {% else %}<p class="muted">No team reports yet.</p>{% endif %}
     {% if card.disagree and not card.pending_review and card.can_report %}
       <form method="post" action="{% url 'staff_reconcile_score' match.id %}" class="staff-form score-form">
@@ -18,19 +18,19 @@
     {% endif %}
     {% if card.can_report %}
       {% for team_form in card.team_forms %}
-        <form method="post" action="{% url 'staff_submit_score' match.id %}" class="staff-form score-form">
+        <form method="post" action="{% url 'staff_submit_score' match.id %}" class="staff-form score-form" onsubmit="return confirmScoreSubmission(event, '{{ team_form.team.name|escapejs }}');">
           {% csrf_token %}<input type="hidden" name="reporting_team" value="{{ team_form.team.id }}">
           <h4>{% if team_form.form_state == 'pending' %}Pending report for {{ team_form.team.name }}{% elif team_form.form_state == 'resubmit' %}Start a resubmission for {{ team_form.team.name }}{% else %}New report for {{ team_form.team.name }}{% endif %}</h4>
           <div class="score-inputs"><label>{{ match.home_team.name }}<input type="number" name="home_score" aria-label="{{ match.home_team.name }} score" min="0" max="99" value="{{ team_form.home_score }}" required></label><label>{{ match.away_team.name }}<input type="number" name="away_score" aria-label="{{ match.away_team.name }} score" min="0" max="99" value="{{ team_form.away_score }}" required></label></div>
-          <fieldset class="player-stat-fieldset"><legend>Goals and assists for {{ team_form.team.name }}</legend><p class="muted">Enter this team's players only. The other team's coach reports their players separately.</p>
+          <fieldset class="player-stat-fieldset"><legend>Player stats for {{ team_form.team.name }}</legend><p class="muted">Enter this team's players only. The other team's coach reports their players separately.</p>
             {% if team_form.players %}
-              <div class="player-stat-heading"><span>Player</span><span>Goals</span><span>Assists</span></div>
-              {% for row in team_form.players %}<div class="player-stat-row"><strong>{{ row.player.display_name }}</strong><label><span class="visually-hidden">Goals by {{ row.player.display_name }}</span><input type="number" name="{{ row.goals_name }}" aria-label="Goals by {{ row.player.display_name }}" min="0" max="99" value="{{ row.goals }}"></label><label><span class="visually-hidden">Assists by {{ row.player.display_name }}</span><input type="number" name="{{ row.assists_name }}" aria-label="Assists by {{ row.player.display_name }}" min="0" max="99" value="{{ row.assists }}"></label></div>{% endfor %}
+              <div class="player-stat-heading"><span>Player</span><span>Goals</span><span>Assists</span><span>Yellow</span><span>Red</span></div>
+              {% for row in team_form.players %}<div class="player-stat-row"><strong>{{ row.player.display_name }}</strong><label><span class="visually-hidden">Goals by {{ row.player.display_name }}</span><input type="number" name="{{ row.goals_name }}" aria-label="Goals by {{ row.player.display_name }}" min="0" max="99" value="{{ row.goals }}"></label><label><span class="visually-hidden">Assists by {{ row.player.display_name }}</span><input type="number" name="{{ row.assists_name }}" aria-label="Assists by {{ row.player.display_name }}" min="0" max="99" value="{{ row.assists }}"></label><label><span class="visually-hidden">Yellow cards for {{ row.player.display_name }}</span><input type="number" name="{{ row.yellow_cards_name }}" aria-label="Yellow cards for {{ row.player.display_name }}" min="0" max="9" value="{{ row.yellow_cards }}"></label><label><span class="visually-hidden">Red cards for {{ row.player.display_name }}</span><input type="number" name="{{ row.red_cards_name }}" aria-label="Red cards for {{ row.player.display_name }}" min="0" max="9" value="{{ row.red_cards }}"></label></div>{% endfor %}
             {% else %}<p class="muted">No active players are listed on this roster yet.</p>{% endif %}
           </fieldset>
           {% if team_form.form_state == 'pending' %}
-            <div class="button-row"><button class="button button-secondary" name="action" value="save_pending" type="submit">Save pending changes</button><button class="button" name="action" value="submit" type="submit">Submit report</button></div>
-          {% else %}<button class="button button-secondary" name="action" value="save_pending" type="submit">{% if team_form.form_state == 'resubmit' %}Create pending resubmission{% else %}Save as pending{% endif %}</button>{% endif %}
+            <div class="button-row"><button class="button button-secondary" name="action" value="save_pending" type="submit">Save pending changes</button><button class="button" name="action" value="submit" type="submit">Submit</button></div>
+          {% else %}<button class="button" name="action" value="submit" type="submit">Submit</button>{% endif %}
         </form>
         {% if team_form.form_state == 'pending' %}<form method="post" action="{% url 'staff_cancel_score' match.id %}" class="cancel-pending-form">{% csrf_token %}<input type="hidden" name="reporting_team" value="{{ team_form.team.id }}"><button class="text-link" type="submit">Cancel pending report</button></form>{% endif %}
       {% empty %}
@@ -39,3 +39,12 @@
     {% else %}<p class="muted">Score reporting opens after kickoff.</p>{% endif %}
   </article>
 {% endwith %}
+<script>
+  function confirmScoreSubmission(event, teamName) {
+    if (event.submitter && event.submitter.value === "save_pending") return true;
+    const form = event.currentTarget;
+    const home = form.querySelector('[name="home_score"]').value;
+    const away = form.querySelector('[name="away_score"]').value;
+    return window.confirm(`Submit ${teamName}'s report with a score of ${home}–${away}?`);
+  }
+</script>

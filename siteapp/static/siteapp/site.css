@@ -120,6 +120,30 @@ footer a { color: #17603e; }
 .team-report-summary > small { grid-column: 1 / -1; margin-left: 0 !important; }
 .team-report-stats { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .25rem .8rem; color: #52635a; font-size: .82rem; }
 .proposed-score { font-size: 1.1rem; color: #33443a; }
+.score-agreement { display: flex; align-items: center; gap: .75rem; margin: .9rem 0; }
+.score-agreement > span { display: inline-grid; flex: 0 0 auto; place-items: center; width: 2.4rem; height: 2.4rem; border: 2px solid currentColor; border-radius: 50%; font-size: 1.7rem; line-height: 1; font-weight: 900; }
+.score-agreement-match { color: #17603e; }
+.score-agreement-match > span { background: #c9f0d2; box-shadow: 0 0 0 3px #e8f7eb; }
+.score-agreement-mismatch { color: #9b342a; }
+.score-agreement-mismatch > span { background: #fde3df; }
+.score-agreement-waiting { color: #718077; font-size: .9rem; }
+.reported-score { display: grid; grid-template-columns: repeat(2, minmax(7rem, 1fr)); gap: .45rem; color: #52635a; }
+.reported-score-side { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .5rem; padding: .4rem .6rem; border: 1px solid #dce7dd; border-radius: .5rem; background: #fff; }
+.reported-score-side small { min-width: 0; margin: 0 !important; overflow-wrap: anywhere; color: #52635a; }
+.reported-score-side b { display: grid; place-items: center; min-width: 2rem; min-height: 2rem; border-radius: .4rem; background: #edf4ed; color: #17251f; font-size: 1.05rem; }
+.team-report-stats { display: grid; gap: .35rem; }
+.team-report-stats > span { display: grid; grid-template-columns: minmax(8rem, .7fr) minmax(0, 1.3fr); gap: .25rem .75rem; padding: .45rem .55rem; border-radius: .45rem; background: #fff; }
+.team-report-stats > span > strong { color: #33443a; }
+.team-report-stats > span > span { color: #52635a; }
+.review-section-title { margin: 1.5rem 0 .65rem; padding-top: 1rem; border-top: 1px solid #e4ebe4; color: #274b38; font-size: 1.05rem; }
+.admin-review > .report-list { gap: 1rem; margin: .75rem 0 1.25rem; }
+.admin-review .report-list li.team-report-summary { grid-template-columns: minmax(0, 1fr) minmax(16rem, 1.2fr); align-items: center; gap: .85rem 1.25rem; padding: 1.1rem; }
+.admin-review .team-report-summary > strong { font-size: 1.05rem; }
+.admin-review .reported-score { width: 100%; }
+.admin-review .team-report-summary > small { color: #718077; }
+.admin-review .team-report-stats { gap: .5rem; }
+.admin-review .team-report-stats > span { grid-template-columns: minmax(8rem, .65fr) minmax(0, 1.35fr); gap: .3rem 1rem; padding: .65rem .75rem; border: 1px solid #e7ede7; }
+.admin-review > .report-list > li:not(.team-report-summary) { gap: .75rem 1.5rem; padding: .8rem 1rem; }
 .button-secondary { background: #7a3933; }
 .button-secondary:hover { background: #5d2924; }
 .message-stack { display: grid; gap: .5rem; }
@@ -143,7 +167,7 @@ footer a { color: #17603e; }
 .submission-pending { grid-row: 1 / span 2; display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: #fff0dc; color: #87550d; font-weight: 800; }
 .player-stat-fieldset { min-width: 0; margin: 0; padding: .8rem; border: 1px solid #dbe7dc; border-radius: .7rem; }
 .player-stat-fieldset legend { padding: 0 .35rem; color: #274b38; font-weight: 750; }
-.player-stat-heading, .player-stat-row { display: grid; grid-template-columns: minmax(0, 1fr) 5rem 5rem; gap: .5rem; align-items: center; }
+.player-stat-heading, .player-stat-row { display: grid; grid-template-columns: minmax(0, 1fr) repeat(4, 4.5rem); gap: .5rem; align-items: center; }
 .player-stat-heading { padding: .35rem .45rem; color: #718077; font-size: .75rem; font-weight: 750; text-transform: uppercase; }
 .player-stat-heading span:not(:first-child) { text-align: center; }
 .player-stat-row { padding: .35rem .45rem; border-top: 1px solid #edf1ed; }
@@ -178,6 +202,10 @@ footer a { color: #17603e; }
   .report-list li small { width: 100%; margin-left: 0; }
   .photo-staff-grid { grid-template-columns: minmax(0, 1fr); }
   .submission-statuses { grid-template-columns: minmax(0, 1fr); }
-  .player-stat-heading, .player-stat-row { grid-template-columns: minmax(0, 1fr) 3.6rem 3.6rem; gap: .35rem; }
+  .player-stat-heading, .player-stat-row { grid-template-columns: minmax(0, 1fr) repeat(4, 2.7rem); gap: .25rem; }
+  .admin-review .report-list li.team-report-summary { grid-template-columns: minmax(0, 1fr); gap: .8rem; padding: .9rem; }
+  .admin-review .reported-score { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem; }
+  .admin-review .reported-score-side { grid-template-columns: minmax(0, 1fr) auto; gap: .35rem; padding: .45rem; }
+  .admin-review .team-report-stats > span { grid-template-columns: minmax(0, 1fr); gap: .2rem; }
   footer { margin-top: 3rem; }
 }

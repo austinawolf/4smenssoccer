@@ -339,11 +339,13 @@ class ScoreSubmissionStat(models.Model):
     player = models.ForeignKey(Player, on_delete=models.PROTECT, related_name="score_submission_stats")
     goals = models.PositiveSmallIntegerField(default=0)
     assists = models.PositiveSmallIntegerField(default=0)
+    yellow_cards = models.PositiveSmallIntegerField(default=0)
+    red_cards = models.PositiveSmallIntegerField(default=0)
 
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=("submission", "player"), name="one_player_stat_per_submission"),
-            models.CheckConstraint(condition=Q(goals__gt=0) | Q(assists__gt=0), name="score_stat_has_contribution"),
+            models.CheckConstraint(condition=Q(goals__gt=0) | Q(assists__gt=0) | Q(yellow_cards__gt=0) | Q(red_cards__gt=0), name="score_stat_has_contribution"),
         ]
 
     def clean(self):
@@ -358,11 +360,13 @@ class ScoreReviewPlayerStat(models.Model):
     player = models.ForeignKey(Player, on_delete=models.PROTECT, related_name="score_review_stats")
     goals = models.PositiveSmallIntegerField(default=0)
     assists = models.PositiveSmallIntegerField(default=0)
+    yellow_cards = models.PositiveSmallIntegerField(default=0)
+    red_cards = models.PositiveSmallIntegerField(default=0)
 
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=("review", "player"), name="one_player_stat_per_review"),
-            models.CheckConstraint(condition=Q(goals__gt=0) | Q(assists__gt=0), name="review_stat_has_contribution"),
+            models.CheckConstraint(condition=Q(goals__gt=0) | Q(assists__gt=0) | Q(yellow_cards__gt=0) | Q(red_cards__gt=0), name="review_stat_has_contribution"),
         ]
 
     def clean(self):

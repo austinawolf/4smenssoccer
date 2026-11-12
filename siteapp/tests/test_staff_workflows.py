@@ -151,7 +151,11 @@ class CoachStaffWorkflowTests(TestCase):
         self.assertIsNone(self.past_match.home_score)
 
         admin = self._login(self.admin_user)
-        self.assertContains(admin.get("/staff/admin/"), "Home Scorer")
+        review_page = admin.get("/staff/admin/")
+        self.assertContains(review_page, "Home Scorer")
+        self.assertContains(review_page, "Team reports match")
+        self.assertContains(review_page, "Home United <b>2</b>")
+        self.assertContains(review_page, "Away Rovers <b>0</b>")
         admin.post(f"/staff/reviews/{review.pk}/decision/", {
             "action": "approve", "home_score": 2, "away_score": 0, "note": "Verified",
         })
@@ -202,6 +206,7 @@ class CoachStaffWorkflowTests(TestCase):
         self.assertEqual(stats, {self.home_player.pk: (1, 1), self.away_player.pk: (1, 0)})
 
         admin = self._login(self.admin_user)
+        self.assertContains(admin.get("/staff/admin/"), "Team reports match")
         admin.post(f"/staff/reviews/{review.pk}/decision/", {
             "action": "approve", "home_score": 1, "away_score": 1, "note": "Both teams reported",
         })
@@ -243,6 +248,7 @@ class CoachStaffWorkflowTests(TestCase):
         self.assertEqual(review.player_stats.get(player=self.home_player).assists, 1)
 
         admin = self._login(self.admin_user)
+        self.assertContains(admin.get("/staff/admin/"), "Team reports differ")
         admin.post(f"/staff/reviews/{review.pk}/decision/", {
             "action": "approve", "home_score": 1, "away_score": 0, "note": "Agreed",
         })
