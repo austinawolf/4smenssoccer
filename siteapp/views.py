@@ -10,6 +10,7 @@ from .models import (
     Match,
     MatchEvent,
     Player,
+    PublicContent,
     Season,
     SeasonRules,
     SeasonTeam,
@@ -20,8 +21,8 @@ SECTIONS = {
     "teams": ("Teams", "Teams", "Browse teams and season rosters."),
     "schedule": ("Schedule", "Schedule", "View upcoming games and approved results."),
     "standings": ("Standings", "Standings", "Follow the season table and player leaderboard."),
-    "coaches": ("Coaches", "Coaches", "Privileged coaches will sign in here to report match scores."),
-    "admin": ("Admin", "Admin", "League administrators manage seasons and review reported scores."),
+    "coaches": ("Coaches", "Coaches", "Coaches can sign in to report match results and update player photos."),
+    "admin": ("Admin", "Admin", "League administrators review reported results and manage league records."),
     "rules": ("Rules", "Rules", "Read the current league rules."),
     "awards": ("Champions & Awards", "Champions & Awards", "Season champions and individual awards."),
     "gallery": ("Gallery", "Gallery", "Photos from the league's seasons."),
@@ -237,6 +238,8 @@ def section(request, slug):
             {"entry": entry, "legacy_badge_url": LEGACY_TEAM_BADGES.get(entry.team.slug)}
             for entry in season_teams
         ]
+    elif slug == "home":
+        context["public_content"] = PublicContent.objects.first()
     elif slug == "schedule" and season:
         context["matches"] = Match.objects.filter(season=season).select_related(
             "home_team__team", "away_team__team"

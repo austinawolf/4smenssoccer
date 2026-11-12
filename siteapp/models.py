@@ -11,6 +11,26 @@ def default_tie_breakers():
     return ["head_to_head", "goal_difference", "goals_against", "clean_sheets"]
 
 
+class PublicContent(models.Model):
+    key = models.CharField(max_length=20, unique=True, default="main", editable=False)
+    about_heading = models.CharField(max_length=160, default="Good soccer. Good people.")
+    about_body = models.TextField(
+        default="11 v 11 men's league established in 2005. Players must meet the season age requirements. "
+        "New players attend a pre-season scrimmage so managers can build balanced teams."
+    )
+    sponsor_name = models.CharField(max_length=160, blank=True)
+    sponsor_url = models.URLField(blank=True)
+    sponsor_offer = models.CharField(max_length=240, blank=True)
+    contact_email = models.EmailField(blank=True)
+
+    class Meta:
+        verbose_name = "homepage and sponsor content"
+        verbose_name_plural = "homepage and sponsor content"
+
+    def __str__(self):
+        return "Homepage and sponsor content"
+
+
 class Season(models.Model):
     class Term(models.TextChoices):
         SPRING = "spring", "Spring"
@@ -91,6 +111,32 @@ class SeasonTeam(models.Model):
     @property
     def name(self):
         return self.display_name or self.team.name
+
+
+class StaffProfile(models.Model):
+    class Role(models.TextChoices):
+        COACH = "coach", "Coach"
+        ADMIN = "admin", "League administrator"
+
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="staff_profile")
+    role = models.CharField(max_length=12, choices=Role.choices)
+
+    def __str__(self):
+        return f"{self.user} ({self.get_role_display()})"
+
+
+class CoachAssignment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="coach_assignments")
+    season_team = models.ForeignKey(SeasonTeam, on_delete=models.CASCADE, related_name="coach_assignments")
+
+    class Meta:
+        ordering = ("season_team__season", "season_team__display_order", "season_team__team__name")
+        constraints = [
+            models.UniqueConstraint(fields=("user", "season_team"), name="unique_coach_per_season_team"),
+        ]
+
+    def __str__(self):
+        return f"{self.user} — {self.season_team}"
 
 
 class Player(models.Model):
@@ -212,6 +258,123 @@ class Match(models.Model):
             raise ValidationError(errors)
 
 
+class ScoreSubmission(models.Model):
+    class Status(models.TextChoices):
+        PENDING = "pending", "Pending"
+        SUBMITTED = "submitted", "Submitted"
+
+    match = models.ForeignKey(Match, on_delete=models.CASCADE, related_name="score_submissions")
+    reporting_team = models.ForeignKey(SeasonTeam, on_delete=models.PROTECT, related_name="score_submissions")
+    submitted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="score_submissions")
+    home_score = models.PositiveSmallIntegerField(validators=[MinValueValidator(0)])
+    away_score = models.PositiveSmallIntegerField(validators=[MinValueValidator(0)])
+    submitted_at = models.DateTimeField(default=timezone.now)
+    is_current = models.BooleanField(default=True)
+    status = models.CharField(max_length=12, choices=Status.choices, default=Status.SUBMITTED)
+
+    class Meta:
+        ordering = ("submitted_at", "pk")
+        indexes = [models.Index(fields=("match", "is_current"))]
+        constraints = [
+            models.UniqueConstraint(
+                fields=("match", "reporting_team"),
+                condition=Q(status="pending"),
+                name="one_pending_submission_per_team",
+            ),
+            models.UniqueConstraint(
+                fields=("match", "reporting_team"),
+                condition=Q(status="submitted", is_current=True),
+                name="one_current_submission_per_team",
+            ),
+            models.CheckConstraint(
+                condition=Q(status="submitted") | Q(is_current=False),
+                name="pending_submission_not_current",
+            ),
+        ]
+
+    def __str__(self):
+        return f"{self.match}: {self.home_score}–{self.away_score} ({self.reporting_team})"
+
+    def clean(self):
+        if self.match_id and self.reporting_team_id:
+            if self.reporting_team_id not in (self.match.home_team_id, self.match.away_team_id):
+                raise ValidationError({"reporting_team": "The reporting team must be playing in this match."})
+            if self.reporting_team.season_id != self.match.season_id:
+                raise ValidationError({"reporting_team": "The reporting team must belong to the match season."})
+
+
+class ScoreReview(models.Model):
+    class Source(models.TextChoices):
+        MATCHED_REPORTS = "matched", "Matching coach reports"
+        COACH_RECONCILIATION = "reconciled", "Coach reconciliation"
+
+    class Status(models.TextChoices):
+        PENDING = "pending", "Pending review"
+        APPROVED = "approved", "Approved"
+        REJECTED = "rejected", "Rejected"
+        SUPERSEDED = "superseded", "Superseded by a new report"
+
+    match = models.ForeignKey(Match, on_delete=models.CASCADE, related_name="score_reviews")
+    source = models.CharField(max_length=12, choices=Source.choices)
+    home_score = models.PositiveSmallIntegerField(validators=[MinValueValidator(0)])
+    away_score = models.PositiveSmallIntegerField(validators=[MinValueValidator(0)])
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="created_score_reviews")
+    created_at = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=12, choices=Status.choices, default=Status.PENDING)
+    reviewed_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL, related_name="decided_score_reviews"
+    )
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+    decision_note = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ("created_at", "pk")
+
+    def __str__(self):
+        return f"{self.match}: {self.home_score}–{self.away_score} ({self.get_status_display()})"
+
+
+class ScoreSubmissionStat(models.Model):
+    submission = models.ForeignKey(ScoreSubmission, on_delete=models.CASCADE, related_name="player_stats")
+    player = models.ForeignKey(Player, on_delete=models.PROTECT, related_name="score_submission_stats")
+    goals = models.PositiveSmallIntegerField(default=0)
+    assists = models.PositiveSmallIntegerField(default=0)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=("submission", "player"), name="one_player_stat_per_submission"),
+            models.CheckConstraint(condition=Q(goals__gt=0) | Q(assists__gt=0), name="score_stat_has_contribution"),
+        ]
+
+    def clean(self):
+        if self.submission_id and self.player_id and not RosterMembership.objects.filter(
+            season_team=self.submission.reporting_team, player=self.player
+        ).exclude(status=RosterMembership.Status.INACTIVE).exists():
+            raise ValidationError({"player": "Player must be on the reporting team's active roster."})
+
+
+class ScoreReviewPlayerStat(models.Model):
+    review = models.ForeignKey(ScoreReview, on_delete=models.CASCADE, related_name="player_stats")
+    player = models.ForeignKey(Player, on_delete=models.PROTECT, related_name="score_review_stats")
+    goals = models.PositiveSmallIntegerField(default=0)
+    assists = models.PositiveSmallIntegerField(default=0)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=("review", "player"), name="one_player_stat_per_review"),
+            models.CheckConstraint(condition=Q(goals__gt=0) | Q(assists__gt=0), name="review_stat_has_contribution"),
+        ]
+
+    def clean(self):
+        if self.review_id and self.player_id:
+            match = self.review.match
+            eligible = RosterMembership.objects.filter(
+                season_team__in=(match.home_team, match.away_team), player=self.player
+            ).exclude(status=RosterMembership.Status.INACTIVE).exists()
+            if not eligible:
+                raise ValidationError({"player": "Player must be on one of the teams in this match."})
+
+
 class MatchAppearance(models.Model):
     match = models.ForeignKey(Match, on_delete=models.CASCADE, related_name="appearances")
     player = models.ForeignKey(Player, on_delete=models.PROTECT, related_name="match_appearances")
@@ -245,6 +408,9 @@ class MatchEvent(models.Model):
         RED_CARD = "red", "Red card"
 
     match = models.ForeignKey(Match, on_delete=models.CASCADE, related_name="events")
+    source_score_review = models.ForeignKey(
+        ScoreReview, null=True, blank=True, on_delete=models.SET_NULL, related_name="published_events"
+    )
     player = models.ForeignKey(Player, on_delete=models.PROTECT, related_name="match_events")
     kind = models.CharField(max_length=12, choices=Kind.choices)
     minute = models.PositiveSmallIntegerField(null=True, blank=True)

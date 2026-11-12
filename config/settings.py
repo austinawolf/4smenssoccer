@@ -1,5 +1,6 @@
 """Settings for the local proof of concept."""
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "local-poc-only-change-before-deployment"
@@ -48,7 +49,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": Path(os.environ.get("DJANGO_SQLITE_PATH", BASE_DIR / "db.sqlite3")),
     }
 }
 
@@ -59,5 +60,7 @@ USE_I18N = True
 USE_TZ = True
 STATIC_URL = "static/"
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = Path(os.environ.get("DJANGO_MEDIA_ROOT", BASE_DIR / "media"))
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+LOGIN_URL = "staff_login"
+LOGIN_REDIRECT_URL = "staff_home"

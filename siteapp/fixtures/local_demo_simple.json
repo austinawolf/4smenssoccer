@@ -1,0 +1,444 @@
+[
+  {
+    "model": "siteapp.season",
+    "pk": 5001,
+    "fields": {
+      "name": "Two Team Demo",
+      "slug": "two-team-demo",
+      "year": 2026,
+      "term": "other",
+      "start_date": "2026-11-01",
+      "end_date": "2026-12-31",
+      "is_active": true,
+      "is_published": true,
+      "points_for_win": 3,
+      "points_for_draw": 1,
+      "points_for_loss": 0,
+      "tie_breakers": [
+        "head_to_head",
+        "goal_difference",
+        "goals_against",
+        "clean_sheets"
+      ]
+    }
+  },
+  {
+    "model": "siteapp.team",
+    "pk": 5101,
+    "fields": {
+      "name": "Demo Rovers",
+      "slug": "demo-rovers",
+      "badge": "",
+      "description": ""
+    }
+  },
+  {
+    "model": "siteapp.team",
+    "pk": 5102,
+    "fields": {
+      "name": "Demo Athletic",
+      "slug": "demo-athletic",
+      "badge": "",
+      "description": ""
+    }
+  },
+  {
+    "model": "siteapp.seasonteam",
+    "pk": 5201,
+    "fields": {
+      "season": 5001,
+      "team": 5101,
+      "display_name": "",
+      "display_order": 1
+    }
+  },
+  {
+    "model": "siteapp.seasonteam",
+    "pk": 5202,
+    "fields": {
+      "season": 5001,
+      "team": 5102,
+      "display_name": "",
+      "display_order": 2
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 5301,
+    "fields": {
+      "display_name": "Alex Morgan",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 5401,
+    "fields": {
+      "season_team": 5201,
+      "player": 5301,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 5302,
+    "fields": {
+      "display_name": "Jamie Lee",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 5402,
+    "fields": {
+      "season_team": 5201,
+      "player": 5302,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 5303,
+    "fields": {
+      "display_name": "Taylor Reed",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 5403,
+    "fields": {
+      "season_team": 5201,
+      "player": 5303,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 5304,
+    "fields": {
+      "display_name": "Jordan Kim",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 5404,
+    "fields": {
+      "season_team": 5202,
+      "player": 5304,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 5305,
+    "fields": {
+      "display_name": "Casey Park",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 5405,
+    "fields": {
+      "season_team": 5202,
+      "player": 5305,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 5306,
+    "fields": {
+      "display_name": "Riley Chen",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 5406,
+    "fields": {
+      "season_team": 5202,
+      "player": 5306,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5501,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$simple-demo-admin$NITyxLCvXxWQubBAOVz+MkoVVLywdbIlO+V6oA1yGhU=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "Demo",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-11-01T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 5601,
+    "fields": {
+      "user": 5501,
+      "role": "admin"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5502,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$simple-demo-coach_rovers$vQ5WnBUPpR27kW5bqGHxxjtUGryxY1F7FVJHZZzvJ38=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "coach_rovers",
+      "first_name": "Rovers Coach",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-01T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 5602,
+    "fields": {
+      "user": 5502,
+      "role": "coach"
+    }
+  },
+  {
+    "model": "siteapp.coachassignment",
+    "pk": 5701,
+    "fields": {
+      "user": 5502,
+      "season_team": 5201
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5503,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$simple-demo-coach_athletic$5Pl45ozNtkeBZbISxOinzdaxksQ+0yf9Zo4LMlxSZOI=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "coach_athletic",
+      "first_name": "Athletic Coach",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-01T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 5603,
+    "fields": {
+      "user": 5503,
+      "role": "coach"
+    }
+  },
+  {
+    "model": "siteapp.coachassignment",
+    "pk": 5702,
+    "fields": {
+      "user": 5503,
+      "season_team": 5202
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 5801,
+    "fields": {
+      "season": 5001,
+      "home_team": 5201,
+      "away_team": 5202,
+      "kickoff_at": "2026-11-01T16:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-01T16:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 5802,
+    "fields": {
+      "season": 5001,
+      "home_team": 5202,
+      "away_team": 5201,
+      "kickoff_at": "2026-11-08T16:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-08T16:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 5803,
+    "fields": {
+      "season": 5001,
+      "home_team": 5201,
+      "away_team": 5202,
+      "kickoff_at": "2026-11-15T16:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-15T16:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.scoresubmission",
+    "pk": 5901,
+    "fields": {
+      "match": 5801,
+      "reporting_team": 5201,
+      "submitted_by": 5502,
+      "home_score": 2,
+      "away_score": 1,
+      "submitted_at": "2026-11-01T18:00:00Z",
+      "is_current": true
+    }
+  },
+  {
+    "model": "siteapp.scoresubmissionstat",
+    "pk": 6001,
+    "fields": {
+      "submission": 5901,
+      "player": 5301,
+      "goals": 2,
+      "assists": 0
+    }
+  },
+  {
+    "model": "siteapp.scoresubmissionstat",
+    "pk": 6002,
+    "fields": {
+      "submission": 5901,
+      "player": 5302,
+      "goals": 0,
+      "assists": 1
+    }
+  },
+  {
+    "model": "siteapp.scoresubmission",
+    "pk": 5902,
+    "fields": {
+      "match": 5801,
+      "reporting_team": 5202,
+      "submitted_by": 5503,
+      "home_score": 2,
+      "away_score": 1,
+      "submitted_at": "2026-11-01T18:00:00Z",
+      "is_current": true
+    }
+  },
+  {
+    "model": "siteapp.scoresubmissionstat",
+    "pk": 6003,
+    "fields": {
+      "submission": 5902,
+      "player": 5304,
+      "goals": 1,
+      "assists": 0
+    }
+  },
+  {
+    "model": "siteapp.scorereview",
+    "pk": 6101,
+    "fields": {
+      "match": 5801,
+      "source": "matched",
+      "home_score": 2,
+      "away_score": 1,
+      "created_by": 5503,
+      "created_at": "2026-11-01T18:00:00Z",
+      "status": "pending",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "decision_note": ""
+    }
+  },
+  {
+    "model": "siteapp.scorereviewplayerstat",
+    "pk": 6201,
+    "fields": {
+      "review": 6101,
+      "player": 5301,
+      "goals": 2,
+      "assists": 0
+    }
+  },
+  {
+    "model": "siteapp.scorereviewplayerstat",
+    "pk": 6202,
+    "fields": {
+      "review": 6101,
+      "player": 5302,
+      "goals": 0,
+      "assists": 1
+    }
+  },
+  {
+    "model": "siteapp.scorereviewplayerstat",
+    "pk": 6203,
+    "fields": {
+      "review": 6101,
+      "player": 5304,
+      "goals": 1,
+      "assists": 0
+    }
+  }
+]

@@ -21,13 +21,15 @@ Implement in order, keeping each step small and locally runnable. Update this li
 
 ## Staff workflows
 
-- [ ] Add staff login and role model for admins and coaches; keep player profiles separate from login accounts.
-- [ ] Assign coaches to teams by season and enforce scope on the server for every write.
-- [ ] Add coach score reporting so both teams can submit match scores.
-- [ ] Add score comparison and coach reconciliation UI when reports disagree.
-- [ ] Add admin pending-results queue with approve/reject and review history; only approved results affect public pages.
-- [ ] Add phone-friendly player photo upload/replacement for admins and assigned coaches.
-- [ ] Add admin editing for rules, homepage content, sponsor information, teams, players and schedule.
+- [x] Add staff login and role model for admins and coaches; keep player profiles separate from login accounts.
+- [x] Assign coaches to teams by season and enforce scope on the server for every write.
+- [x] Add coach score reporting so both teams can submit match scores.
+- [x] Collect team-specific goal and assist counts and publish them only with approved results.
+- [x] Add per-team unsubmitted, pending and submitted report states with cancelable drafts and a categorized game selector.
+- [x] Add score comparison and coach reconciliation UI when reports disagree.
+- [x] Add admin pending-results queue with approve/reject and review history; only approved results affect public pages.
+- [x] Add phone-friendly player photo upload/replacement for admins and assigned coaches.
+- [x] Add admin editing for rules, homepage content, sponsor information, teams, players and schedule.
 
 ## Quality and deployment
 

@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Staff{% endblock %} | 4S Ranch Men's Soccer</title>
+  <link rel="stylesheet" href="{% static 'siteapp/site.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{% url 'home' %}">4S Ranch <span>Men's Soccer</span></a>
+    <nav aria-label="Staff navigation">
+      <a href="{% url 'staff_home' %}">Staff home</a>
+      {% if request.user.is_authenticated %}<form method="post" action="{% url 'staff_logout' %}" class="logout-form">{% csrf_token %}<button type="submit">Sign out</button></form>{% endif %}
+    </nav>
+  </header>
+  <main>
+    <section class="hero hero-compact"><p class="eyebrow">League staff</p><h1>{% block heading %}Staff workspace{% endblock %}</h1></section>
+    {% if messages %}<div class="message-stack" aria-live="polite">{% for message in messages %}<p class="message {{ message.tags }}">{{ message }}</p>{% endfor %}</div>{% endif %}
+    {% block content %}{% endblock %}
+    <footer><a href="{% url 'home' %}">Return to public site</a></footer>
+  </main>
+</body>
+</html>

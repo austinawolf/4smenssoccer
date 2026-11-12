@@ -1,0 +1,21 @@
+{% extends 'siteapp/staff/base.html' %}
+{% block title %}Admin workspace{% endblock %}
+{% block heading %}Result review{% endblock %}
+{% block content %}
+  <div class="staff-links"><a class="button" href="{% url 'staff_photos' %}">Update player photos</a><a class="text-link" href="/django-admin/">Manage league records</a></div>
+  {% for review in reviews %}
+    <article class="content-card staff-match">
+      <p class="eyebrow">{{ review.match.season.name }} · {{ review.match.kickoff_at|date:'D, M j, Y, g:i A' }} · {{ review.get_source_display }}</p>
+      <h2>{{ review.match.home_team.name }} vs {{ review.match.away_team.name }}</h2>
+      <p class="proposed-score">Proposed result: <strong>{{ review.home_score }}–{{ review.away_score }}</strong></p>
+      <ul class="report-list">{% for report in review.match.score_submissions.all %}{% if report.is_current %}<li class="team-report-summary"><strong>{{ report.reporting_team.name }}</strong><span>{{ report.home_score }}–{{ report.away_score }}</span><small>{{ report.submitted_by.get_full_name|default:report.submitted_by.username }}</small><div class="team-report-stats">{% if report.player_stats.all %}{% for stat in report.player_stats.all %}<span>{{ stat.player.display_name }}: {{ stat.goals }} goal{{ stat.goals|pluralize }} · {{ stat.assists }} assist{{ stat.assists|pluralize }}</span>{% endfor %}{% else %}<span class="muted">No player goals or assists reported</span>{% endif %}</div></li>{% endif %}{% endfor %}</ul>
+      {% if review.player_stats.all %}<h3>Player goals and assists</h3><ul class="report-list">{% for stat in review.player_stats.all %}<li><strong>{{ stat.player.display_name }}</strong><span>{{ stat.goals }} goals · {{ stat.assists }} assists</span></li>{% endfor %}</ul>{% endif %}
+      <form method="post" action="{% url 'staff_review_decision' review.id %}" class="staff-form score-form">
+        {% csrf_token %}<h3>Review official score</h3>
+        <div class="score-inputs"><label>{{ review.match.home_team.name }}<input type="number" name="home_score" aria-label="{{ review.match.home_team.name }} score" min="0" max="99" value="{{ review.home_score }}" required></label><label>{{ review.match.away_team.name }}<input type="number" name="away_score" aria-label="{{ review.match.away_team.name }} score" min="0" max="99" value="{{ review.away_score }}" required></label></div>
+        <label>Decision note<textarea name="note" rows="2"></textarea></label>
+        <div class="button-row"><button class="button" name="action" value="approve" type="submit">Approve result</button><button class="button button-secondary" name="action" value="reject" type="submit">Reject and request correction</button></div>
+      </form>
+    </article>
+  {% empty %}<p class="empty-state">No results are waiting for review.</p>{% endfor %}
+{% endblock %}

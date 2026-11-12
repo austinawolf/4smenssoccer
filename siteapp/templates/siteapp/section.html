@@ -56,10 +56,19 @@
         </article>
         <article class="content-card">
           <p class="eyebrow">About the league</p>
-          <h2>Good soccer. Good people.</h2>
-          <p>11 v 11 men's league established in 2005. Players must meet the season age requirements. New players attend a pre-season scrimmage so managers can build balanced teams.</p>
+          <h2>{% if public_content %}{{ public_content.about_heading }}{% else %}Good soccer. Good people.{% endif %}</h2>
+          <p>{% if public_content %}{{ public_content.about_body }}{% else %}11 v 11 men's league established in 2005. Players must meet the season age requirements. New players attend a pre-season scrimmage so managers can build balanced teams.{% endif %}</p>
           <a class="text-link" href="{% url 'section' slug='rules' %}">Read the league rules →</a>
         </article>
+        {% if public_content.sponsor_name %}
+          <article class="content-card">
+            <p class="eyebrow">League sponsor</p>
+            <h2>{{ public_content.sponsor_name }}</h2>
+            {% if public_content.sponsor_offer %}<p>{{ public_content.sponsor_offer }}</p>{% endif %}
+            {% if public_content.sponsor_url %}<a class="text-link" href="{{ public_content.sponsor_url }}" rel="noopener">Visit sponsor →</a>{% endif %}
+          </article>
+        {% endif %}
+        {% if public_content.contact_email %}<article class="content-card"><p class="eyebrow">Contact</p><h2>Questions?</h2><a class="text-link" href="mailto:{{ public_content.contact_email }}">{{ public_content.contact_email }}</a></article>{% endif %}
         <article class="content-card">
           <p class="eyebrow">League history</p>
           <h2>Every season has a story.</h2>
@@ -154,9 +163,9 @@
       {% if gallery_items %}<section class="gallery-grid">{% for item in gallery_items %}<figure class="content-card gallery-card"><img src="{{ item.image.url }}" alt="{{ item.caption|default:'Soccer photo' }}" loading="lazy"><figcaption>{{ item.caption }}{% if item.season %}<small>{{ item.season.name }}</small>{% endif %}</figcaption></figure>{% endfor %}</section>
       {% else %}<p class="empty-state">No photos have been added for this season yet.</p>{% endif %}
     {% elif active_slug == 'coaches' %}
-      <article class="content-card staff-placeholder"><p class="eyebrow">Staff access</p><h2>Coach workspace</h2><p>Coach sign-in and score reporting will be added in the staff workflow phase.</p></article>
+      <article class="content-card staff-placeholder"><p class="eyebrow">Staff access</p><h2>Coach workspace</h2><p>Assigned coaches can report scores, reconcile reports with the opposing team and update roster photos.</p><a class="button" href="{% url 'staff_login' %}">Staff sign in</a></article>
     {% elif active_slug == 'admin' %}
-      <article class="content-card staff-placeholder"><p class="eyebrow">League staff</p><h2>Administration</h2><p>Manage seasons, teams, players, results and content in the <a class="text-link" href="/django-admin/">Django admin</a> for now.</p></article>
+      <article class="content-card staff-placeholder"><p class="eyebrow">League staff</p><h2>Administration</h2><p>Review submitted results in the staff workspace or manage seasons, teams, players, rules and schedule records in the <a class="text-link" href="/django-admin/">Django admin</a>.</p><a class="button" href="{% url 'staff_login' %}">Staff sign in</a></article>
     {% endif %}
 
     <footer>Sunday mornings · 4S Ranch Sports Park <span>·</span> <a href="{% url 'section' slug='rules' %}{% if season %}?season={{ season.slug }}{% endif %}">League rules</a></footer>

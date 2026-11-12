@@ -1,0 +1,16 @@
+{% extends 'siteapp/staff/base.html' %}
+{% block title %}Coach workspace{% endblock %}
+{% block heading %}Coach workspace{% endblock %}
+{% block content %}
+  <div class="staff-links"><a class="button" href="{% url 'staff_photos' %}">Update player photos</a></div>
+  {% if game_groups %}
+    <form method="get" class="game-picker">
+      <label for="game">Select a game</label>
+      <select id="game" name="game" onchange="this.form.submit()">
+        {% for group in game_groups %}<optgroup label="{{ group.label }}">{% for option in group.games %}<option value="{{ option.match.id }}" {% if selected_card.match.id == option.match.id %}selected{% endif %}>{{ option.select_label }}</option>{% endfor %}</optgroup>{% endfor %}
+      </select>
+      <noscript><button class="button" type="submit">View game</button></noscript>
+    </form>
+    {% include 'siteapp/staff/_coach_match_card.html' with card=selected_card %}
+  {% else %}<p class="empty-state">No matches are assigned to your account. Ask an administrator to assign your team.</p>{% endif %}
+{% endblock %}

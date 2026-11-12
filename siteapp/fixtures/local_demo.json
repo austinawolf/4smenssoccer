@@ -2726,5 +2726,269 @@
       "score_approved_by": null,
       "updated_at": "2026-11-11T00:00:00Z"
     }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8001,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$local-demo-admin$ZzHgQ9dhIK53MkNFkGkk5Gx7IebqalIdcXl8+VZSUdw=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-11-12T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 8401,
+    "fields": {
+      "user": 8001,
+      "role": "admin"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8002,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$local-demo-coach_grassholes$7VGp+VSlfCfr/s2oiu8KNZ3Z2Zf912h2qrYn+8x8aaQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "coach_grassholes",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-12T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 8402,
+    "fields": {
+      "user": 8002,
+      "role": "coach"
+    }
+  },
+  {
+    "model": "siteapp.coachassignment",
+    "pk": 8501,
+    "fields": {
+      "user": 8002,
+      "season_team": 9201
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8003,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$local-demo-coach_pinkponyclub$E29hNu8EgBbLDOVBfiGA47J3Z4zZBLIWyV/50JON+fw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "coach_pinkponyclub",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-12T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 8403,
+    "fields": {
+      "user": 8003,
+      "role": "coach"
+    }
+  },
+  {
+    "model": "siteapp.coachassignment",
+    "pk": 8502,
+    "fields": {
+      "user": 8003,
+      "season_team": 9202
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8004,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$local-demo-coach_hufflepuff$yecSFYzxsexxFAydF868sJ9MaW1S3nEmUhaqJVy62NY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "coach_hufflepuff",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-12T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 8404,
+    "fields": {
+      "user": 8004,
+      "role": "coach"
+    }
+  },
+  {
+    "model": "siteapp.coachassignment",
+    "pk": 8503,
+    "fields": {
+      "user": 8004,
+      "season_team": 9203
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8005,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$local-demo-coach_seaurchins$T7IwxmsyavnMwuwPWWYOAt1wGhw+WKYrnqSHT8//Mxw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "coach_seaurchins",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-12T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 8405,
+    "fields": {
+      "user": 8005,
+      "role": "coach"
+    }
+  },
+  {
+    "model": "siteapp.coachassignment",
+    "pk": 8504,
+    "fields": {
+      "user": 8005,
+      "season_team": 9204
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8006,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$local-demo-coach_purpletippedcobras$OPH+r568fKTvviWXcMuZv7cvuhrim35/BfnC/Fg9xqM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "coach_purpletippedcobras",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-12T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 8406,
+    "fields": {
+      "user": 8006,
+      "role": "coach"
+    }
+  },
+  {
+    "model": "siteapp.coachassignment",
+    "pk": 8505,
+    "fields": {
+      "user": 8006,
+      "season_team": 9205
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8007,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$local-demo-coach_smurfturf$cGY6EQy41npl7T/m/FfGi7JcFxH8uofuwq+DBlw7zI8=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "coach_smurfturf",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-12T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 8407,
+    "fields": {
+      "user": 8007,
+      "role": "coach"
+    }
+  },
+  {
+    "model": "siteapp.coachassignment",
+    "pk": 8506,
+    "fields": {
+      "user": 8007,
+      "season_team": 9206
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8008,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$local-demo-coach_upyourarsenal$mg12NarGyYzkPRLInxTetU7UnHTkMH9DGQy/Y2ODLpE=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "coach_upyourarsenal",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-12T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "siteapp.staffprofile",
+    "pk": 8408,
+    "fields": {
+      "user": 8008,
+      "role": "coach"
+    }
+  },
+  {
+    "model": "siteapp.coachassignment",
+    "pk": 8507,
+    "fields": {
+      "user": 8008,
+      "season_team": 9207
+    }
   }
 ]

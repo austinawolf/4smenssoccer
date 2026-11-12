@@ -1,0 +1,18 @@
+{% extends 'siteapp/staff/base.html' %}
+{% block title %}Player photos{% endblock %}
+{% block heading %}Update player photos{% endblock %}
+{% block content %}
+  <p class="intro">Choose a photo from your device or use its camera. Images must be under 8 MB.</p>
+  <section class="photo-staff-grid">
+    {% for player in players %}
+      <article class="content-card staff-player">
+        {% if player.photo %}<img class="staff-player-photo" src="{{ player.photo.url }}" alt="Current photo of {{ player.display_name }}">{% else %}<span class="staff-player-photo empty-photo" aria-hidden="true">{{ player.display_name|first|upper }}</span>{% endif %}
+        <h2>{{ player.display_name }}</h2>
+        <form method="post" enctype="multipart/form-data" action="{% url 'staff_player_photo' player.id %}" class="staff-form">
+          {% csrf_token %}<label for="photo-{{ player.id }}">Choose or take photo</label><input id="photo-{{ player.id }}" type="file" name="photo" accept="image/*" capture="environment" required>
+          <button class="button" type="submit">Save photo</button>
+        </form>
+      </article>
+    {% empty %}<p class="empty-state">No active season roster players are available for photo updates.</p>{% endfor %}
+  </section>
+{% endblock %}

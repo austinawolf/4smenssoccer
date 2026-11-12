@@ -1,20 +1,41 @@
 from django.contrib import admin
+from django.contrib.auth import get_user_model
+from django.contrib.auth.admin import UserAdmin
 from django.db import transaction
 from django.utils import timezone
 
 from .models import (
     Award,
+    CoachAssignment,
     GalleryItem,
     Match,
     MatchAppearance,
     MatchEvent,
     Player,
+    PublicContent,
     RosterMembership,
     Season,
     SeasonRules,
     SeasonTeam,
+    ScoreReview,
+    ScoreSubmission,
+    StaffProfile,
     Team,
 )
+
+
+class StaffProfileInline(admin.StackedInline):
+    model = StaffProfile
+    can_delete = False
+    extra = 0
+
+
+class LeagueUserAdmin(UserAdmin):
+    inlines = (StaffProfileInline,)
+
+
+admin.site.unregister(get_user_model())
+admin.site.register(get_user_model(), LeagueUserAdmin)
 
 
 class SeasonTeamInline(admin.TabularInline):
@@ -49,6 +70,18 @@ class SeasonTeamAdmin(admin.ModelAdmin):
     list_display = ("name", "season", "team", "display_order")
     list_filter = ("season",)
     search_fields = ("team__name", "display_name", "season__name")
+
+
+@admin.register(CoachAssignment)
+class CoachAssignmentAdmin(admin.ModelAdmin):
+    list_display = ("user", "season_team", "season")
+    list_filter = ("season_team__season",)
+    search_fields = ("user__username", "user__first_name", "user__last_name", "season_team__team__name")
+    autocomplete_fields = ("user", "season_team")
+
+    @admin.display(description="Season")
+    def season(self, obj):
+        return obj.season_team.season
 
 
 @admin.register(Player)
@@ -111,6 +144,39 @@ class MatchAdmin(admin.ModelAdmin):
         super().save_model(request, obj, form, change)
 
 
+@admin.register(ScoreSubmission)
+class ScoreSubmissionAdmin(admin.ModelAdmin):
+    list_display = ("match", "reporting_team", "home_score", "away_score", "status", "submitted_by", "submitted_at", "is_current")
+    list_filter = ("match__season", "status", "is_current")
+    search_fields = ("match__home_team__team__name", "match__away_team__team__name", "submitted_by__username")
+    readonly_fields = ("match", "reporting_team", "submitted_by", "home_score", "away_score", "status", "submitted_at", "is_current")
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
+@admin.register(ScoreReview)
+class ScoreReviewAdmin(admin.ModelAdmin):
+    list_display = ("match", "source", "home_score", "away_score", "status", "created_by", "reviewed_by", "created_at")
+    list_filter = ("status", "source", "match__season")
+    readonly_fields = tuple(field.name for field in ScoreReview._meta.fields)
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
 @admin.register(SeasonRules)
 class SeasonRulesAdmin(admin.ModelAdmin):
     list_display = ("title", "season", "updated_at")
@@ -131,3 +197,14 @@ class GalleryItemAdmin(admin.ModelAdmin):
     list_display = ("caption", "season", "taken_on", "is_published", "display_order")
     list_filter = ("season", "is_published")
     search_fields = ("caption",)
+
+
+@admin.register(PublicContent)
+class PublicContentAdmin(admin.ModelAdmin):
+    fields = ("about_heading", "about_body", "sponsor_name", "sponsor_url", "sponsor_offer", "contact_email")
+
+    def has_add_permission(self, request):
+        return not PublicContent.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
