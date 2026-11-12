@@ -14,6 +14,7 @@ Implement in order, keeping each step small and locally runnable. Update this li
 
 - [x] Add database-backed seasons and an admin-controlled single active season; make public pages default to it.
 - [x] Add teams, season-team entries, players, season rosters, player photos, and private player rank.
+- [x] Show team badges from the previous site and a headshot placeholder for roster players; add a team selector to the public directory.
 - [x] Add matches, schedule display, approved results, and season-specific rules.
 - [x] Calculate standings from approved regular-season results and publish the season leaderboard from recorded match stats.
 - [x] Add champions/awards and gallery pages or links, based on which historical content will be migrated.

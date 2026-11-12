@@ -2058,7 +2058,7 @@
     "fields": {
       "season": 9001,
       "title": "League Rules (updated January 9, 2022)",
-      "body": "The Golden Rule: Don’t be a dick.\\n\\nEligibility: Men must be at least 30 years old on January 1 of the season; goalkeepers must be at least 25. Players need a completed application, acknowledged rules and liability release, and paid fees.\\n\\nMatches: Teams need at least seven rostered players at kickoff. Regular-season games may end in a draw. Wins are worth 3 points, draws 1 point, and losses 0 points. Games are 40-minute halves.\\n\\nStandings tiebreakers, in order: head-to-head, goal difference, goals against, clean sheets, then coin toss.\\n\\nEquipment: Shin guards and soccer cleats are required; metal cleats are not allowed. No slide tackling, except the goalkeeper inside their own penalty area and the specific no-opponent exceptions in the full league rules.\\n\\nCards: Two yellow cards in a match result in a red card. A player sits out the next match for each yellow card after their fifth in a season. Red-card suspensions depend on the offense.\\n\\nThis local fixture contains a shortened summary. Refer to the original league rules for the complete policy.",
+      "body": "The Golden Rule: Don\u2019t be a dick.\\n\\nEligibility: Men must be at least 30 years old on January 1 of the season; goalkeepers must be at least 25. Players need a completed application, acknowledged rules and liability release, and paid fees.\\n\\nMatches: Teams need at least seven rostered players at kickoff. Regular-season games may end in a draw. Wins are worth 3 points, draws 1 point, and losses 0 points. Games are 40-minute halves.\\n\\nStandings tiebreakers, in order: head-to-head, goal difference, goals against, clean sheets, then coin toss.\\n\\nEquipment: Shin guards and soccer cleats are required; metal cleats are not allowed. No slide tackling, except the goalkeeper inside their own penalty area and the specific no-opponent exceptions in the full league rules.\\n\\nCards: Two yellow cards in a match result in a red card. A player sits out the next match for each yellow card after their fifth in a season. Red-card suspensions depend on the offense.\\n\\nThis local fixture contains a shortened summary. Refer to the original league rules for the complete policy.",
       "updated_at": "2022-01-09"
     }
   },
@@ -2153,6 +2153,576 @@
       "home_score": 6,
       "away_score": 3,
       "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9306,
+    "fields": {
+      "season": 9001,
+      "home_team": 9203,
+      "away_team": 9204,
+      "kickoff_at": "2026-09-20T18:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 2,
+      "away_score": 1,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9307,
+    "fields": {
+      "season": 9001,
+      "home_team": 9201,
+      "away_team": 9202,
+      "kickoff_at": "2026-09-27T15:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 1,
+      "away_score": 1,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9308,
+    "fields": {
+      "season": 9001,
+      "home_team": 9204,
+      "away_team": 9207,
+      "kickoff_at": "2026-09-27T16:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 1,
+      "away_score": 3,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9309,
+    "fields": {
+      "season": 9001,
+      "home_team": 9205,
+      "away_team": 9206,
+      "kickoff_at": "2026-09-27T18:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 1,
+      "away_score": 2,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9310,
+    "fields": {
+      "season": 9001,
+      "home_team": 9201,
+      "away_team": 9204,
+      "kickoff_at": "2026-10-04T15:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 2,
+      "away_score": 2,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9311,
+    "fields": {
+      "season": 9001,
+      "home_team": 9203,
+      "away_team": 9205,
+      "kickoff_at": "2026-10-04T16:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 3,
+      "away_score": 2,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9312,
+    "fields": {
+      "season": 9001,
+      "home_team": 9202,
+      "away_team": 9206,
+      "kickoff_at": "2026-10-04T18:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 1,
+      "away_score": 3,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9313,
+    "fields": {
+      "season": 9001,
+      "home_team": 9203,
+      "away_team": 9202,
+      "kickoff_at": "2026-10-11T15:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 2,
+      "away_score": 3,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9314,
+    "fields": {
+      "season": 9001,
+      "home_team": 9204,
+      "away_team": 9206,
+      "kickoff_at": "2026-10-11T16:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 2,
+      "away_score": 2,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9315,
+    "fields": {
+      "season": 9001,
+      "home_team": 9207,
+      "away_team": 9205,
+      "kickoff_at": "2026-10-11T18:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 3,
+      "away_score": 4,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9316,
+    "fields": {
+      "season": 9001,
+      "home_team": 9204,
+      "away_team": 9205,
+      "kickoff_at": "2026-10-18T15:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 0,
+      "away_score": 1,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9317,
+    "fields": {
+      "season": 9001,
+      "home_team": 9201,
+      "away_team": 9203,
+      "kickoff_at": "2026-10-18T16:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 1,
+      "away_score": 1,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9318,
+    "fields": {
+      "season": 9001,
+      "home_team": 9206,
+      "away_team": 9207,
+      "kickoff_at": "2026-10-18T18:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 4,
+      "away_score": 0,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9319,
+    "fields": {
+      "season": 9001,
+      "home_team": 9203,
+      "away_team": 9204,
+      "kickoff_at": "2026-10-25T15:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9320,
+    "fields": {
+      "season": 9001,
+      "home_team": 9201,
+      "away_team": 9207,
+      "kickoff_at": "2026-10-25T16:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9321,
+    "fields": {
+      "season": 9001,
+      "home_team": 9205,
+      "away_team": 9206,
+      "kickoff_at": "2026-10-25T18:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9322,
+    "fields": {
+      "season": 9001,
+      "home_team": 9207,
+      "away_team": 9204,
+      "kickoff_at": "2026-11-01T16:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9323,
+    "fields": {
+      "season": 9001,
+      "home_team": 9203,
+      "away_team": 9206,
+      "kickoff_at": "2026-11-01T17:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9324,
+    "fields": {
+      "season": 9001,
+      "home_team": 9201,
+      "away_team": 9202,
+      "kickoff_at": "2026-11-01T19:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9325,
+    "fields": {
+      "season": 9001,
+      "home_team": 9205,
+      "away_team": 9207,
+      "kickoff_at": "2026-11-08T16:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9326,
+    "fields": {
+      "season": 9001,
+      "home_team": 9203,
+      "away_team": 9202,
+      "kickoff_at": "2026-11-08T17:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9327,
+    "fields": {
+      "season": 9001,
+      "home_team": 9201,
+      "away_team": 9204,
+      "kickoff_at": "2026-11-08T19:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9328,
+    "fields": {
+      "season": 9001,
+      "home_team": 9201,
+      "away_team": 9205,
+      "kickoff_at": "2026-11-15T16:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9329,
+    "fields": {
+      "season": 9001,
+      "home_team": 9207,
+      "away_team": 9206,
+      "kickoff_at": "2026-11-15T17:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9330,
+    "fields": {
+      "season": 9001,
+      "home_team": 9202,
+      "away_team": 9204,
+      "kickoff_at": "2026-11-15T19:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9331,
+    "fields": {
+      "season": 9001,
+      "home_team": 9204,
+      "away_team": 9206,
+      "kickoff_at": "2026-11-22T16:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9332,
+    "fields": {
+      "season": 9001,
+      "home_team": 9202,
+      "away_team": 9205,
+      "kickoff_at": "2026-11-22T17:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9333,
+    "fields": {
+      "season": 9001,
+      "home_team": 9201,
+      "away_team": 9203,
+      "kickoff_at": "2026-11-22T19:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9334,
+    "fields": {
+      "season": 9001,
+      "home_team": 9203,
+      "away_team": 9206,
+      "kickoff_at": "2026-11-29T16:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9335,
+    "fields": {
+      "season": 9001,
+      "home_team": 9202,
+      "away_team": 9207,
+      "kickoff_at": "2026-11-29T17:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": null,
+      "away_score": null,
+      "score_approved_at": null,
       "score_approved_by": null,
       "updated_at": "2026-11-11T00:00:00Z"
     }

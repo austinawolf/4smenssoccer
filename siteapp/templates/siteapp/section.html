@@ -72,25 +72,42 @@
       </section>
     {% elif active_slug == 'teams' %}
       {% if season_teams %}
+        <form class="team-picker" method="get">
+          {% if season %}<input type="hidden" name="season" value="{{ season.slug }}">{% endif %}
+          <label for="team">Choose a team</label>
+          <select id="team" name="team" onchange="this.form.submit()">
+            <option value="">All teams</option>
+            {% for option in team_options %}
+              <option value="{{ option.team.slug }}" {% if selected_team == option.team.slug %}selected{% endif %}>{{ option.name }}</option>
+            {% endfor %}
+          </select>
+          <noscript><button type="submit">View team</button></noscript>
+        </form>
         <section class="team-grid" aria-label="{{ season.name }} teams">
-          {% for entry in season_teams %}
+          {% for team_data in display_teams %}
+            {% with entry=team_data.entry %}
             <article class="content-card team-card">
-              {% if entry.team.badge %}<img class="team-badge" src="{{ entry.team.badge.url }}" alt="{{ entry.name }} badge">{% endif %}
-              <h2>{{ entry.name }}</h2>
+              <div class="team-heading">
+                {% if entry.team.badge %}<img class="team-badge" src="{{ entry.team.badge.url }}" alt="{{ entry.name }} badge">
+                {% elif team_data.legacy_badge_url %}<img class="team-badge" src="{{ team_data.legacy_badge_url }}" alt="{{ entry.name }} badge" loading="lazy">{% endif %}
+                <h2>{{ entry.name }}</h2>
+              </div>
               {% if entry.team.description %}<p>{{ entry.team.description }}</p>{% endif %}
               <h3>Roster</h3>
               <ul class="roster-list">
                 {% for membership in entry.roster.all %}
                   {% if membership.status != 'inactive' and membership.player.public_profile %}
                     <li>
-                      {% if membership.player.photo %}<img class="player-photo" src="{{ membership.player.photo.url }}" alt="">{% endif %}
-                      <span>{% if membership.jersey_number %}#{{ membership.jersey_number }} {% endif %}{{ membership.player.display_name }}</span>
+                      {% if membership.player.photo %}<img class="player-photo" src="{{ membership.player.photo.url }}" alt="Headshot of {{ membership.player.display_name }}" loading="lazy">
+                      {% else %}<img class="player-photo" src="{% static 'siteapp/player-placeholder.svg' %}" alt="Placeholder headshot for {{ membership.player.display_name }}" loading="lazy">{% endif %}
+                      <span class="player-name">{% if membership.jersey_number %}<small>#{{ membership.jersey_number }}</small> {% endif %}{{ membership.player.display_name }}</span>
                       {% if membership.get_position_display %}<small>{{ membership.get_position_display }}</small>{% endif %}
                     </li>
                   {% endif %}
                 {% empty %}<li class="muted">Roster not published yet.</li>{% endfor %}
               </ul>
             </article>
+            {% endwith %}
           {% endfor %}
         </section>
       {% else %}<p class="empty-state">No teams have been added for this season yet.</p>{% endif %}

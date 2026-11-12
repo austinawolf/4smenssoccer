@@ -27,6 +27,17 @@ SECTIONS = {
     "gallery": ("Gallery", "Gallery", "Photos from the league's seasons."),
 }
 
+# Team badges published by the previous site (Fall 2026 directory).
+LEGACY_TEAM_BADGES = {
+    "grassholes": "https://4smenssoccer.com/wp-content/uploads/2026/08/IMG-20260830-WA0006.jpg",
+    "pinkponyclubdefutbol": "https://4smenssoccer.com/wp-content/uploads/2026/08/IMG-20260830-WA0011.jpg",
+    "hufflepufffc": "https://4smenssoccer.com/wp-content/uploads/2026/08/IMG-20260830-WA0009.jpg",
+    "seaurchins": "https://4smenssoccer.com/wp-content/uploads/2026/08/IMG-20260830-WA0005.jpg",
+    "purpletippedcobras": "https://4smenssoccer.com/wp-content/uploads/2026/08/IMG-20260830-WA0008.jpg",
+    "smurfturf": "https://4smenssoccer.com/wp-content/uploads/2026/08/IMG-20260830-WA0010.jpg",
+    "upyourarsenal": "https://4smenssoccer.com/wp-content/uploads/2026/08/IMG-20260830-WA0007.jpg",
+}
+
 
 def get_selected_season(request):
     seasons = Season.objects.filter(is_published=True)
@@ -214,9 +225,18 @@ def section(request, slug):
         "seasons": seasons,
     }
     if slug == "teams" and season:
-        context["season_teams"] = SeasonTeam.objects.filter(season=season).select_related("team").prefetch_related(
+        season_teams = SeasonTeam.objects.filter(season=season).select_related("team").prefetch_related(
             "roster__player"
         )
+        context["season_teams"] = season_teams
+        context["selected_team"] = request.GET.get("team", "")
+        context["team_options"] = season_teams
+        if context["selected_team"]:
+            season_teams = season_teams.filter(team__slug=context["selected_team"])
+        context["display_teams"] = [
+            {"entry": entry, "legacy_badge_url": LEGACY_TEAM_BADGES.get(entry.team.slug)}
+            for entry in season_teams
+        ]
     elif slug == "schedule" and season:
         context["matches"] = Match.objects.filter(season=season).select_related(
             "home_team__team", "away_team__team"
