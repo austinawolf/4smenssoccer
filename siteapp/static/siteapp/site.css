@@ -106,6 +106,8 @@ footer a { color: #17603e; }
 .game-picker { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; margin: 1.25rem 0; color: #52635a; font-size: .9rem; }
 .game-picker label { font-weight: 750; }
 .game-picker select { min-width: min(100%, 23rem); max-width: 100%; padding: .7rem .85rem; border: 1px solid #cbd8cd; border-radius: .65rem; background: white; color: #17251f; font: inherit; }
+.review-picker { margin: 1.25rem 0; max-width: 48rem; }
+.review-picker label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem .75rem; }
 .game-picker optgroup { font-style: normal; font-weight: 750; }
 .game-picker option { font-weight: 400; }
 .score-form { max-width: 620px; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #edf1ed; }

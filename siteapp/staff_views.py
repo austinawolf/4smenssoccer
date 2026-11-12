@@ -350,13 +350,20 @@ def submit_reconciliation(request, match_id):
 @login_required
 def admin_dashboard(request):
     _profile(request, StaffProfile.Role.ADMIN)
-    reviews = ScoreReview.objects.filter(status=ScoreReview.Status.PENDING).select_related(
+    reviews = list(ScoreReview.objects.filter(status=ScoreReview.Status.PENDING).select_related(
         "match__season", "match__home_team__team", "match__away_team__team", "created_by"
     ).prefetch_related(
         "player_stats__player", "match__score_submissions__reporting_team__team",
         "match__score_submissions__player_stats__player",
+    ).order_by("-match__kickoff_at", "-created_at", "-pk"))
+    selected_review = next(
+        (review for review in reviews if str(review.pk) == request.GET.get("review")),
+        reviews[0] if reviews else None,
     )
-    return render(request, "siteapp/staff/admin_dashboard.html", {"reviews": reviews})
+    return render(request, "siteapp/staff/admin_dashboard.html", {
+        "reviews": reviews,
+        "selected_review": selected_review,
+    })
 
 
 @login_required

@@ -162,6 +162,31 @@ class CoachStaffWorkflowTests(TestCase):
         row = next(row for row in get_leaderboard(self.season) if row["player"] == self.home_player)
         self.assertEqual((row["goals"], row["assists"]), (2, 1))
 
+    def test_admin_result_queue_uses_game_dropdown_sorted_newest_first(self):
+        older = ScoreReview.objects.create(
+            match=self.past_match,
+            source=ScoreReview.Source.MATCHED_REPORTS,
+            home_score=1,
+            away_score=0,
+            created_by=self.home_coach,
+        )
+        newer = ScoreReview.objects.create(
+            match=self.other_past_match,
+            source=ScoreReview.Source.COACH_RECONCILIATION,
+            home_score=2,
+            away_score=1,
+            created_by=self.home_coach,
+        )
+        admin = self._login(self.admin_user)
+
+        default_page = admin.get("/staff/admin/")
+        self.assertEqual(default_page.context["selected_review"].pk, newer.pk)
+        self.assertContains(default_page, 'id="review-select"')
+        self.assertContains(default_page, "newest game first")
+
+        selected_page = admin.get(f"/staff/admin/?review={older.pk}")
+        self.assertEqual(selected_page.context["selected_review"].pk, older.pk)
+
     def test_matching_team_reports_merge_stats_from_both_rosters(self):
         home = self._login(self.home_coach)
         away = self._login(self.away_coach)

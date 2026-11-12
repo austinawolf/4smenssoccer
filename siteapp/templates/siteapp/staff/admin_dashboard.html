@@ -3,7 +3,18 @@
 {% block heading %}Result review{% endblock %}
 {% block content %}
   <div class="staff-links"><a class="button" href="{% url 'staff_photos' %}">Update player photos</a><a class="text-link" href="/django-admin/">Manage league records</a></div>
-  {% for review in reviews %}
+  {% if reviews %}
+    <form method="get" class="staff-form review-picker">
+      <label for="review-select">Select a result to review <span class="muted">{{ reviews|length }} pending · newest game first</span></label>
+      <select id="review-select" name="review" onchange="this.form.submit()">
+        {% for item in reviews %}
+          <option value="{{ item.pk }}"{% if item.pk == selected_review.pk %} selected{% endif %}>{{ item.match.kickoff_at|date:'M j, Y' }} · {{ item.match.home_team.name }} vs {{ item.match.away_team.name }} · {{ item.home_score }}–{{ item.away_score }}</option>
+        {% endfor %}
+      </select>
+    </form>
+  {% endif %}
+  {% if selected_review %}
+    {% with review=selected_review %}
     <article class="content-card staff-match">
       <p class="eyebrow">{{ review.match.season.name }} · {{ review.match.kickoff_at|date:'D, M j, Y, g:i A' }} · {{ review.get_source_display }}</p>
       <h2>{{ review.match.home_team.name }} vs {{ review.match.away_team.name }}</h2>
@@ -17,5 +28,6 @@
         <div class="button-row"><button class="button" name="action" value="approve" type="submit">Approve result</button><button class="button button-secondary" name="action" value="reject" type="submit">Reject and request correction</button></div>
       </form>
     </article>
-  {% empty %}<p class="empty-state">No results are waiting for review.</p>{% endfor %}
+    {% endwith %}
+  {% else %}<p class="empty-state">No results are waiting for review.</p>{% endif %}
 {% endblock %}
