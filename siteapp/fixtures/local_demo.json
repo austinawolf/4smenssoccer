@@ -1,0 +1,2160 @@
+[
+  {
+    "model": "siteapp.season",
+    "pk": 9001,
+    "fields": {
+      "name": "Fall 2026",
+      "slug": "fall-2026",
+      "year": 2026,
+      "term": "fall",
+      "start_date": "2026-09-01",
+      "end_date": "2026-12-20",
+      "is_active": true,
+      "is_published": true,
+      "points_for_win": 3,
+      "points_for_draw": 1,
+      "points_for_loss": 0,
+      "tie_breakers": [
+        "head_to_head",
+        "goal_difference",
+        "goals_against",
+        "clean_sheets"
+      ]
+    }
+  },
+  {
+    "model": "siteapp.team",
+    "pk": 9101,
+    "fields": {
+      "name": "Grassholes",
+      "slug": "grassholes",
+      "badge": "",
+      "description": ""
+    }
+  },
+  {
+    "model": "siteapp.team",
+    "pk": 9102,
+    "fields": {
+      "name": "Pink Pony Club de Futbol",
+      "slug": "pinkponyclubdefutbol",
+      "badge": "",
+      "description": ""
+    }
+  },
+  {
+    "model": "siteapp.team",
+    "pk": 9103,
+    "fields": {
+      "name": "Hufflepuff FC",
+      "slug": "hufflepufffc",
+      "badge": "",
+      "description": ""
+    }
+  },
+  {
+    "model": "siteapp.team",
+    "pk": 9104,
+    "fields": {
+      "name": "Sea Urchins",
+      "slug": "seaurchins",
+      "badge": "",
+      "description": ""
+    }
+  },
+  {
+    "model": "siteapp.team",
+    "pk": 9105,
+    "fields": {
+      "name": "Purple Tipped Cobras",
+      "slug": "purpletippedcobras",
+      "badge": "",
+      "description": ""
+    }
+  },
+  {
+    "model": "siteapp.team",
+    "pk": 9106,
+    "fields": {
+      "name": "Smurf & Turf",
+      "slug": "smurfturf",
+      "badge": "",
+      "description": ""
+    }
+  },
+  {
+    "model": "siteapp.team",
+    "pk": 9107,
+    "fields": {
+      "name": "Up Your ARSEnal",
+      "slug": "upyourarsenal",
+      "badge": "",
+      "description": ""
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10001,
+    "fields": {
+      "display_name": "Kevin Dusi",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10002,
+    "fields": {
+      "display_name": "Steve Bryson",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10003,
+    "fields": {
+      "display_name": "Colin McCauley",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10004,
+    "fields": {
+      "display_name": "Gerardo Roa",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10005,
+    "fields": {
+      "display_name": "Greg Mills",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10006,
+    "fields": {
+      "display_name": "Gregory Roller",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10007,
+    "fields": {
+      "display_name": "Jason Santos",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10008,
+    "fields": {
+      "display_name": "Jesse LeStronge",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10009,
+    "fields": {
+      "display_name": "Mikey Corle",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10010,
+    "fields": {
+      "display_name": "Paul Ryan",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10011,
+    "fields": {
+      "display_name": "Ricardo Baptista",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10012,
+    "fields": {
+      "display_name": "Ben Ward",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10013,
+    "fields": {
+      "display_name": "Angel Lopez",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10101,
+    "fields": {
+      "display_name": "Keith Barnett",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10102,
+    "fields": {
+      "display_name": "Charlie Horton",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10103,
+    "fields": {
+      "display_name": "Emad Elias",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10104,
+    "fields": {
+      "display_name": "Jonathan Huls",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10105,
+    "fields": {
+      "display_name": "Kyle Portlock",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10106,
+    "fields": {
+      "display_name": "Mikey Cuaresma",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10107,
+    "fields": {
+      "display_name": "Nick Pince",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10108,
+    "fields": {
+      "display_name": "Richard Huizar",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10109,
+    "fields": {
+      "display_name": "Peter Walters",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10110,
+    "fields": {
+      "display_name": "Rick King",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10111,
+    "fields": {
+      "display_name": "Steev Yovan",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10112,
+    "fields": {
+      "display_name": "Thomas Offerman",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10113,
+    "fields": {
+      "display_name": "Travis Moore",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10201,
+    "fields": {
+      "display_name": "Geoff Cook",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10202,
+    "fields": {
+      "display_name": "Austin Wolf",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10203,
+    "fields": {
+      "display_name": "Brett Higdon",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10204,
+    "fields": {
+      "display_name": "Parris Shannon",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10205,
+    "fields": {
+      "display_name": "Freddy Reyes",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10206,
+    "fields": {
+      "display_name": "Hector Espinosa",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10207,
+    "fields": {
+      "display_name": "Mamoon Syed",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10208,
+    "fields": {
+      "display_name": "Matias Farre",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10209,
+    "fields": {
+      "display_name": "Tom Edmonston",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10210,
+    "fields": {
+      "display_name": "Travis Golia",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10211,
+    "fields": {
+      "display_name": "Aziz Can",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10212,
+    "fields": {
+      "display_name": "Duncan Greeley",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10301,
+    "fields": {
+      "display_name": "Ryan Berman",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10302,
+    "fields": {
+      "display_name": "Ben Zintak",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10303,
+    "fields": {
+      "display_name": "Adrian Cordero",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10304,
+    "fields": {
+      "display_name": "Alex Fromer",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10305,
+    "fields": {
+      "display_name": "Joe Batie",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10306,
+    "fields": {
+      "display_name": "Dan G.",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10307,
+    "fields": {
+      "display_name": "Jimmy Howell",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10308,
+    "fields": {
+      "display_name": "Matt Gillespie",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10309,
+    "fields": {
+      "display_name": "Mike Gates",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10310,
+    "fields": {
+      "display_name": "Jose Olguin",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10311,
+    "fields": {
+      "display_name": "Nicho Campos",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10312,
+    "fields": {
+      "display_name": "Nick Kelley",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10313,
+    "fields": {
+      "display_name": "Mitchell Humphreys",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10401,
+    "fields": {
+      "display_name": "Ben Yip",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10402,
+    "fields": {
+      "display_name": "Andrew Hoerner",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10403,
+    "fields": {
+      "display_name": "Andy Clark",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10404,
+    "fields": {
+      "display_name": "Peter Klarwein",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10405,
+    "fields": {
+      "display_name": "Grant Jenkins",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10406,
+    "fields": {
+      "display_name": "Jared Lynch",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10407,
+    "fields": {
+      "display_name": "Jeff Johnson",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10408,
+    "fields": {
+      "display_name": "Mauricio Murillo",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10409,
+    "fields": {
+      "display_name": "Patrick Zarrinkar",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10410,
+    "fields": {
+      "display_name": "Ryan Devenish",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10411,
+    "fields": {
+      "display_name": "Ross Libman",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10412,
+    "fields": {
+      "display_name": "Derek Arndt",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10413,
+    "fields": {
+      "display_name": "Jason Campbell",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10501,
+    "fields": {
+      "display_name": "Brandon McKay",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10502,
+    "fields": {
+      "display_name": "Alain Chorbajian",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10503,
+    "fields": {
+      "display_name": "Adam Erlenbusch",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10504,
+    "fields": {
+      "display_name": "Andy Roch",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10505,
+    "fields": {
+      "display_name": "Brandon Heid",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10506,
+    "fields": {
+      "display_name": "Gabe Canzi",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10507,
+    "fields": {
+      "display_name": "Scottie Howison",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10508,
+    "fields": {
+      "display_name": "Rich Griffin, Jr.",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10509,
+    "fields": {
+      "display_name": "Jeff Oesterblad",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10510,
+    "fields": {
+      "display_name": "Thomas Gerstenberg",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10511,
+    "fields": {
+      "display_name": "Jacob Villareal-Massie",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10512,
+    "fields": {
+      "display_name": "Martynas Vasiliauskas",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10513,
+    "fields": {
+      "display_name": "Jonathan Tapia",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10601,
+    "fields": {
+      "display_name": "Gio Zavala",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10602,
+    "fields": {
+      "display_name": "Carlos Millan",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10603,
+    "fields": {
+      "display_name": "Colin Press",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10604,
+    "fields": {
+      "display_name": "David Embleton",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10605,
+    "fields": {
+      "display_name": "Jason Galloway",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10606,
+    "fields": {
+      "display_name": "John Barbosa",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10607,
+    "fields": {
+      "display_name": "Jon McGowan",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10608,
+    "fields": {
+      "display_name": "Jonny Scotson",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10609,
+    "fields": {
+      "display_name": "Jose Hernandez",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10610,
+    "fields": {
+      "display_name": "Mikee Lopez",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10611,
+    "fields": {
+      "display_name": "Christian Avila",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10612,
+    "fields": {
+      "display_name": "Connor Swartout",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.player",
+    "pk": 10613,
+    "fields": {
+      "display_name": "Shane Moran",
+      "photo": "",
+      "rank": null,
+      "public_profile": true
+    }
+  },
+  {
+    "model": "siteapp.seasonteam",
+    "pk": 9201,
+    "fields": {
+      "season": 9001,
+      "team": 9101,
+      "display_name": "",
+      "display_order": 1
+    }
+  },
+  {
+    "model": "siteapp.seasonteam",
+    "pk": 9202,
+    "fields": {
+      "season": 9001,
+      "team": 9102,
+      "display_name": "",
+      "display_order": 2
+    }
+  },
+  {
+    "model": "siteapp.seasonteam",
+    "pk": 9203,
+    "fields": {
+      "season": 9001,
+      "team": 9103,
+      "display_name": "",
+      "display_order": 3
+    }
+  },
+  {
+    "model": "siteapp.seasonteam",
+    "pk": 9204,
+    "fields": {
+      "season": 9001,
+      "team": 9104,
+      "display_name": "",
+      "display_order": 4
+    }
+  },
+  {
+    "model": "siteapp.seasonteam",
+    "pk": 9205,
+    "fields": {
+      "season": 9001,
+      "team": 9105,
+      "display_name": "",
+      "display_order": 5
+    }
+  },
+  {
+    "model": "siteapp.seasonteam",
+    "pk": 9206,
+    "fields": {
+      "season": 9001,
+      "team": 9106,
+      "display_name": "",
+      "display_order": 6
+    }
+  },
+  {
+    "model": "siteapp.seasonteam",
+    "pk": 9207,
+    "fields": {
+      "season": 9001,
+      "team": 9107,
+      "display_name": "",
+      "display_order": 7
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20001,
+    "fields": {
+      "season_team": 9201,
+      "player": 10001,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20002,
+    "fields": {
+      "season_team": 9201,
+      "player": 10002,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20003,
+    "fields": {
+      "season_team": 9201,
+      "player": 10003,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20004,
+    "fields": {
+      "season_team": 9201,
+      "player": 10004,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20005,
+    "fields": {
+      "season_team": 9201,
+      "player": 10005,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20006,
+    "fields": {
+      "season_team": 9201,
+      "player": 10006,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20007,
+    "fields": {
+      "season_team": 9201,
+      "player": 10007,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20008,
+    "fields": {
+      "season_team": 9201,
+      "player": 10008,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20009,
+    "fields": {
+      "season_team": 9201,
+      "player": 10009,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20010,
+    "fields": {
+      "season_team": 9201,
+      "player": 10010,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20011,
+    "fields": {
+      "season_team": 9201,
+      "player": 10011,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20012,
+    "fields": {
+      "season_team": 9201,
+      "player": 10012,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20013,
+    "fields": {
+      "season_team": 9201,
+      "player": 10013,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20101,
+    "fields": {
+      "season_team": 9202,
+      "player": 10101,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20102,
+    "fields": {
+      "season_team": 9202,
+      "player": 10102,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20103,
+    "fields": {
+      "season_team": 9202,
+      "player": 10103,
+      "jersey_number": null,
+      "position": "goalkeeper",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20104,
+    "fields": {
+      "season_team": 9202,
+      "player": 10104,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20105,
+    "fields": {
+      "season_team": 9202,
+      "player": 10105,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20106,
+    "fields": {
+      "season_team": 9202,
+      "player": 10106,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20107,
+    "fields": {
+      "season_team": 9202,
+      "player": 10107,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20108,
+    "fields": {
+      "season_team": 9202,
+      "player": 10108,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20109,
+    "fields": {
+      "season_team": 9202,
+      "player": 10109,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20110,
+    "fields": {
+      "season_team": 9202,
+      "player": 10110,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20111,
+    "fields": {
+      "season_team": 9202,
+      "player": 10111,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20112,
+    "fields": {
+      "season_team": 9202,
+      "player": 10112,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20113,
+    "fields": {
+      "season_team": 9202,
+      "player": 10113,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20201,
+    "fields": {
+      "season_team": 9203,
+      "player": 10201,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20202,
+    "fields": {
+      "season_team": 9203,
+      "player": 10202,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20203,
+    "fields": {
+      "season_team": 9203,
+      "player": 10203,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20204,
+    "fields": {
+      "season_team": 9203,
+      "player": 10204,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20205,
+    "fields": {
+      "season_team": 9203,
+      "player": 10205,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20206,
+    "fields": {
+      "season_team": 9203,
+      "player": 10206,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20207,
+    "fields": {
+      "season_team": 9203,
+      "player": 10207,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20208,
+    "fields": {
+      "season_team": 9203,
+      "player": 10208,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20209,
+    "fields": {
+      "season_team": 9203,
+      "player": 10209,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20210,
+    "fields": {
+      "season_team": 9203,
+      "player": 10210,
+      "jersey_number": null,
+      "position": "goalkeeper",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20211,
+    "fields": {
+      "season_team": 9203,
+      "player": 10211,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20212,
+    "fields": {
+      "season_team": 9203,
+      "player": 10212,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20301,
+    "fields": {
+      "season_team": 9204,
+      "player": 10301,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20302,
+    "fields": {
+      "season_team": 9204,
+      "player": 10302,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20303,
+    "fields": {
+      "season_team": 9204,
+      "player": 10303,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20304,
+    "fields": {
+      "season_team": 9204,
+      "player": 10304,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20305,
+    "fields": {
+      "season_team": 9204,
+      "player": 10305,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20306,
+    "fields": {
+      "season_team": 9204,
+      "player": 10306,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20307,
+    "fields": {
+      "season_team": 9204,
+      "player": 10307,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20308,
+    "fields": {
+      "season_team": 9204,
+      "player": 10308,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20309,
+    "fields": {
+      "season_team": 9204,
+      "player": 10309,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20310,
+    "fields": {
+      "season_team": 9204,
+      "player": 10310,
+      "jersey_number": null,
+      "position": "goalkeeper",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20311,
+    "fields": {
+      "season_team": 9204,
+      "player": 10311,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20312,
+    "fields": {
+      "season_team": 9204,
+      "player": 10312,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20313,
+    "fields": {
+      "season_team": 9204,
+      "player": 10313,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20401,
+    "fields": {
+      "season_team": 9205,
+      "player": 10401,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20402,
+    "fields": {
+      "season_team": 9205,
+      "player": 10402,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20403,
+    "fields": {
+      "season_team": 9205,
+      "player": 10403,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20404,
+    "fields": {
+      "season_team": 9205,
+      "player": 10404,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20405,
+    "fields": {
+      "season_team": 9205,
+      "player": 10405,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20406,
+    "fields": {
+      "season_team": 9205,
+      "player": 10406,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20407,
+    "fields": {
+      "season_team": 9205,
+      "player": 10407,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20408,
+    "fields": {
+      "season_team": 9205,
+      "player": 10408,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20409,
+    "fields": {
+      "season_team": 9205,
+      "player": 10409,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20410,
+    "fields": {
+      "season_team": 9205,
+      "player": 10410,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20411,
+    "fields": {
+      "season_team": 9205,
+      "player": 10411,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20412,
+    "fields": {
+      "season_team": 9205,
+      "player": 10412,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20413,
+    "fields": {
+      "season_team": 9205,
+      "player": 10413,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20501,
+    "fields": {
+      "season_team": 9206,
+      "player": 10501,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20502,
+    "fields": {
+      "season_team": 9206,
+      "player": 10502,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20503,
+    "fields": {
+      "season_team": 9206,
+      "player": 10503,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20504,
+    "fields": {
+      "season_team": 9206,
+      "player": 10504,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20505,
+    "fields": {
+      "season_team": 9206,
+      "player": 10505,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20506,
+    "fields": {
+      "season_team": 9206,
+      "player": 10506,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20507,
+    "fields": {
+      "season_team": 9206,
+      "player": 10507,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20508,
+    "fields": {
+      "season_team": 9206,
+      "player": 10508,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20509,
+    "fields": {
+      "season_team": 9206,
+      "player": 10509,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20510,
+    "fields": {
+      "season_team": 9206,
+      "player": 10510,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20511,
+    "fields": {
+      "season_team": 9206,
+      "player": 10511,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20512,
+    "fields": {
+      "season_team": 9206,
+      "player": 10512,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20513,
+    "fields": {
+      "season_team": 9206,
+      "player": 10513,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20601,
+    "fields": {
+      "season_team": 9207,
+      "player": 10601,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20602,
+    "fields": {
+      "season_team": 9207,
+      "player": 10602,
+      "jersey_number": null,
+      "position": "goalkeeper",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20603,
+    "fields": {
+      "season_team": 9207,
+      "player": 10603,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20604,
+    "fields": {
+      "season_team": 9207,
+      "player": 10604,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20605,
+    "fields": {
+      "season_team": 9207,
+      "player": 10605,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20606,
+    "fields": {
+      "season_team": 9207,
+      "player": 10606,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20607,
+    "fields": {
+      "season_team": 9207,
+      "player": 10607,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20608,
+    "fields": {
+      "season_team": 9207,
+      "player": 10608,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20609,
+    "fields": {
+      "season_team": 9207,
+      "player": 10609,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20610,
+    "fields": {
+      "season_team": 9207,
+      "player": 10610,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20611,
+    "fields": {
+      "season_team": 9207,
+      "player": 10611,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20612,
+    "fields": {
+      "season_team": 9207,
+      "player": 10612,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.rostermembership",
+    "pk": 20613,
+    "fields": {
+      "season_team": 9207,
+      "player": 10613,
+      "jersey_number": null,
+      "position": "",
+      "status": "active"
+    }
+  },
+  {
+    "model": "siteapp.seasonrules",
+    "pk": 9401,
+    "fields": {
+      "season": 9001,
+      "title": "League Rules (updated January 9, 2022)",
+      "body": "The Golden Rule: Don’t be a dick.\\n\\nEligibility: Men must be at least 30 years old on January 1 of the season; goalkeepers must be at least 25. Players need a completed application, acknowledged rules and liability release, and paid fees.\\n\\nMatches: Teams need at least seven rostered players at kickoff. Regular-season games may end in a draw. Wins are worth 3 points, draws 1 point, and losses 0 points. Games are 40-minute halves.\\n\\nStandings tiebreakers, in order: head-to-head, goal difference, goals against, clean sheets, then coin toss.\\n\\nEquipment: Shin guards and soccer cleats are required; metal cleats are not allowed. No slide tackling, except the goalkeeper inside their own penalty area and the specific no-opponent exceptions in the full league rules.\\n\\nCards: Two yellow cards in a match result in a red card. A player sits out the next match for each yellow card after their fifth in a season. Red-card suspensions depend on the offense.\\n\\nThis local fixture contains a shortened summary. Refer to the original league rules for the complete policy.",
+      "updated_at": "2022-01-09"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9301,
+    "fields": {
+      "season": 9001,
+      "home_team": 9201,
+      "away_team": 9206,
+      "kickoff_at": "2026-09-13T15:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 2,
+      "away_score": 0,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9302,
+    "fields": {
+      "season": 9001,
+      "home_team": 9205,
+      "away_team": 9202,
+      "kickoff_at": "2026-09-13T16:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 5,
+      "away_score": 4,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9303,
+    "fields": {
+      "season": 9001,
+      "home_team": 9203,
+      "away_team": 9207,
+      "kickoff_at": "2026-09-13T18:30:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 1,
+      "away_score": 2,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9304,
+    "fields": {
+      "season": 9001,
+      "home_team": 9202,
+      "away_team": 9207,
+      "kickoff_at": "2026-09-20T15:00:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 2,
+      "away_score": 3,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  },
+  {
+    "model": "siteapp.match",
+    "pk": 9305,
+    "fields": {
+      "season": 9001,
+      "home_team": 9201,
+      "away_team": 9205,
+      "kickoff_at": "2026-09-20T16:45:00Z",
+      "venue": "4S Ranch Sports Park",
+      "stage": "regular",
+      "round_name": "",
+      "status": "scheduled",
+      "home_score": 6,
+      "away_score": 3,
+      "score_approved_at": "2026-11-11T00:00:00Z",
+      "score_approved_by": null,
+      "updated_at": "2026-11-11T00:00:00Z"
+    }
+  }
+]

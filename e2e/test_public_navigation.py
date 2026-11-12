@@ -32,3 +32,16 @@ def test_navigation_fits_phone_viewport(page: Page) -> None:
 
     # Content should fit the viewport without making the whole page scroll sideways.
     assert page.evaluate("document.documentElement.scrollWidth") <= 390
+
+
+def test_imported_fall_season_data_is_visible(page: Page) -> None:
+    page.goto("/teams/")
+    expect(page.get_by_role("combobox", name="Season")).to_have_value("fall-2026")
+    expect(page.get_by_role("heading", name="Grassholes", exact=True)).to_be_visible()
+    expect(page.get_by_role("heading", name="Sea Urchins", exact=True)).to_be_visible()
+
+    page.goto("/schedule/")
+    expect(page.get_by_text("2 – 0", exact=True)).to_be_visible()
+
+    page.goto("/standings/")
+    expect(page.get_by_role("cell", name="Grassholes", exact=True).first).to_be_visible()
