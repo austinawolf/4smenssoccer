@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="4S Ranch Men's Soccer League">
+  <title>{{ title }} | 4S Ranch Men's Soccer</title>
+  <link rel="stylesheet" href="{% static 'siteapp/site.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{% url 'home' %}">4S Ranch <span>Men's Soccer</span></a>
+    <nav aria-label="Main navigation">
+      {% for slug, section in sections.items %}
+        <a href="{% if slug == 'home' %}{% url 'home' %}{% else %}{% url 'section' slug=slug %}{% endif %}"
+           {% if slug == active_slug %}aria-current="page"{% endif %}>{{ section.0 }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Established 2005 · 4S Ranch</p>
+      <h1>{{ heading }}</h1>
+      <p class="intro">{{ description }}</p>
+      {% if active_slug == 'home' %}
+        <div class="season-card">
+          <span class="status-dot" aria-hidden="true"></span>
+          <div><strong>Season-aware league site</strong><br><span>Season database and admin controls are next.</span></div>
+        </div>
+      {% endif %}
+    </section>
+    <footer>Sunday mornings · 4S Ranch Sports Park</footer>
+  </main>
+</body>
+</html>
